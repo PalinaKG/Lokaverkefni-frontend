@@ -1,9 +1,6 @@
 import React, { useEffect, useState} from 'react'
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { API_SERVER } from '../settings';
-import HRGraph from './HRGraph';
-import * as settings from '../settings';
-import axios from 'axios';
+
 import ReactFileReader from 'react-file-reader';
 
 import { Button, CircularProgress, Input } from '@material-ui/core';
