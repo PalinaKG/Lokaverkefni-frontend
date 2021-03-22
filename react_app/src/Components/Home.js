@@ -2,75 +2,69 @@ import React, { useEffect, useState} from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { API_SERVER } from '../settings';
 import HRGraph from './HRGraph';
-import CSRFToken from './csrftoken';
+import * as settings from '../settings';
+import axios from 'axios';
+import ReactFileReader from 'react-file-reader';
 
-import { Button, Input } from '@material-ui/core';
+import { Button, CircularProgress, Input } from '@material-ui/core';
+import readXlsxFile from 'read-excel-file'
 
-const Home = () => {
-    const [subID, setSubID] = useState()
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+  
+  const useStyles = makeStyles((theme) => ({
+    root: {
+         width: '100%',
+      '& > * + *': {
+        marginTop: theme.spacing(2),
+      },
+      
+    },
+  }));
+
+
+const Home = (props) => {
+    const [birthyear1, setBirthyear1] = useState()
+    const [birthyear2, setBirthyear2] = useState()
     const [loaded, setLoaded] = useState(false);
+
+
     
 
-    // const readExcel=(file) => {
-    //     const promise = new Promise(resolve,reject) => {
-    //         const fileReader = new FileReader();
-    //         fileReader.readAsArrayBuffer(file);
-            
-    //         fileReader.onload = (e) => {
-    //             const bufferArray = e.target.result;
 
-    //             const wb = XLSX.read(bufferArray, {type: 'buffer'})
-    //             const 
-    //         }
-    //     }
-    // }
+   function handleChange1(e)
+   {
+    setLoaded(false)
+    setBirthyear1(e.target.value)  
+   }
 
-    const onSubmit = (e) =>
-    {
-        console.log(e)
-        console.log(API_SERVER)
-        fetch(API_SERVER + "/api/subject/upload-csv", {
-            method: "POST",
-            headers: {
-              Authorization: `JWT ${localStorage.getItem("token")}`,
-              "Content-Type": "application/json",
-            },
-          })
-            .then((res) => res.json())
-            .then((result) => {
-  
-            })
-            .catch((err) => {
-                console.log("ERROR")
-                console.log(err)
-            });
-    }
+   function handleChange2(e)
+   {
+    setLoaded(false)
+    setBirthyear2(e.target.value)  
+   }
 
-//    function handleChange(e)
-//    {
-//     setLoaded(false)
-//     setSubID(e.target.value)  
-//    }
+   function buttonClicked()
+   {
+       setLoaded(true)
+   }
 
-//    function buttonClicked()
-//    {
-//        setLoaded(true)
-//    }
+
+
 
 
     return (
         <div>
-            <form onSubmit={onSubmit} enctype = "multipart/form/data" >
-                <CSRFToken />
-                <input  type='file' name='file'/>
-                <button type="submit">Upload</button>
-            </form>
-        </div>
-    )
-}
-
-
-            {/* <div onChange={handleChange}>
+            <div onChange={handleChange1}>
+                <Input />
+            </div>
+            <div onChange={handleChange2}>
                 <Input />
             </div>
             <Button onClick={buttonClicked}>
@@ -79,9 +73,15 @@ const Home = () => {
 
             <div>
                 {loaded && 
-                    <HRGraph subjectID = {subID} ></HRGraph>
+                    <HRGraph birthyear1 = {birthyear1} birthyear2 = {birthyear2} ></HRGraph>
                 }
-            </div>  */}
+            </div> 
+        </div>
+    )
+}
+
+
+            
 
 
 export default Home

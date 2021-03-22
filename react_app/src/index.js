@@ -34,7 +34,6 @@ const composeEnhanced = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose /
 const store = createStore(reducer, composeEnhanced(applyMiddleware(thunk))); // We are using thunk, because it allows delaying the dispatch actions
 // Thunk wraps the dispatch actions into custom functions which are available with the mapDispatchToProps
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
