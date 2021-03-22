@@ -117,9 +117,8 @@ const Questionnaire = (props) => {
   return(
     <div className="Questionnaire">
       <h1>Questionnaire</h1>
-
     </div>
-  )
+  );
 
 }
 export default Questionnaire;
