@@ -112,50 +112,49 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 
 
 
-// const Questionnaire = (props) => {
-//   const title = "hello questionnaire";
+const Questionnaire = (props) => {
 
-//   return(
-//     <div className="Questionnaire">
-//       <h1>{title}</h1>
+  return(
+    <div className="Questionnaire">
+      <h1>Questionnaire</h1>
 
-//     </div>
-//   )
-
-// }
-// export default Questionnaire;
-
-
-class Questionnaire extends Component{
-  constructor(){
-    super();
-    this.state = {
-      title: "Questionnaire",
-      subjectID: '',
-      Gender: '',
-      Height: ''
-    }
-
-  }
-
-  addSubject(event){
-    event.preventDefault;
-    console.log('in method');
-  }
-
-
-  render(){
-    let title = this.state.title;
-    return(
-      <div className="Questionnaire">
-        <h1>{title}</h1>
-
-      </div>
-    )
-  }
+    </div>
+  )
 
 }
 export default Questionnaire;
+
+
+// class Questionnaire extends Component{
+//   constructor(){
+//     super();
+//     this.state = {
+//       title: "Questionnaire",
+//       subjectID: '',
+//       Gender: '',
+//       Height: ''
+//     }
+
+//   }
+
+//   addSubject(event){
+//     event.preventDefault;
+//     console.log('in method');
+//   }
+
+
+//   render(){
+//     let title = this.state.title;
+//     return(
+//       <div className="Questionnaire">
+//         <h1>{title}</h1>
+
+//       </div>
+//     )
+//   }
+
+// }
+// export default Questionnaire;
 
 //     constructor(props){
 //         super(props);
