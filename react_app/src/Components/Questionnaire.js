@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Container, CssBaseline, TextField, Typography } from '@material-ui/core';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import { useHistory } from "react-router-dom"; 
+var mshtml = {__html: 'msgolden.html'};
 
 
 
@@ -48,8 +49,29 @@ class Questionnaire extends Component{
       funfair: '',
       trains: '',
 
-      //msgolden pre
-      gendis_b: ''
+      //msgolden before
+      gendis_b: '',
+      fatigue_b: '',
+      headache_b: '',
+      eyestrain_b: '',
+      diffoffocus_b: '',
+      increasedsaliva_b: '',
+      sweating_b:'',
+      nausea_b: '',
+      blurredvis_b: '',
+      dizziness_b: '',
+
+      //msgolden after
+      gendis_a: '',
+      fatigue_a: '',
+      headache_a: '',
+      eyestrain_a: '',
+      diffoffocus_a: '',
+      increasedsaliva_a: '',
+      sweating_a:'',
+      nausea_a: '',
+      blurredvis_a: '',
+      dizziness_a: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -99,8 +121,30 @@ class Questionnaire extends Component{
       funfair: this.state.funfair,
       trains: this.state.trains,
 
-      //msgolden pre
-      gendis_b: this.state.gendis_b
+      //msgolden before
+      gendis_b: this.state.gendis_b,
+      fatigue_b: this.state.fatigue_b,
+      headache_b: this.state.headache_b,
+      eyestrain_b: this.state.eyestrain_b,
+      diffoffocus_b: this.state.diffoffocus_b,
+      increasedsaliva_b: this.state.increasedsaliva_b,
+      sweating_b: this.state.sweating_b,
+      nausea_b: this.state.nausea_b,
+      blurredvis_b: this.state.blurredvis_b,
+      dizziness_b: this.state.diffoffocus_b,
+
+      //msgolden after
+      gendis_a: this.state.gendis_a,
+      fatigue_a: this.state.fatigue_a,
+      headache_a: this.state.headache_a,
+      eyestrain_a: this.state.eyestrain_a,
+      diffoffocus_a: this.state.diffoffocus_a,
+      increasedsaliva_a: this.state.increasedsaliva_a,
+      sweating_a: this.state.sweating_a,
+      nausea_a: this.state.nausea_a,
+      blurredvis_a: this.state.blurredvis_a,
+      dizziness_a: this.state.diffoffocus_a,
+
     };
     
 
@@ -153,12 +197,29 @@ class Questionnaire extends Component{
       funfair: '',
       trains: '',
 
-      //msgolden pre
-      gendis_b: ''
+      //msgolden before
+      gendis_b: '',
+      fatigue_b: '',
+      headache_b: '',
+      eyestrain_b: '',
+      diffoffocus_b: '',
+      increasedsaliva_b: '',
+      sweating_b:'',
+      nausea_b: '',
+      blurredvis_b: '',
+      dizziness_b: '',
 
-
-
-
+      //msgolden after
+      gendis_a: '',
+      fatigue_a: '',
+      headache_a: '',
+      eyestrain_a: '',
+      diffoffocus_a: '',
+      increasedsaliva_a: '',
+      sweating_a:'',
+      nausea_a: '',
+      blurredvis_a: '',
+      dizziness_a: ''
 
     });
     
@@ -171,15 +232,13 @@ class Questionnaire extends Component{
 
   render(){
     const { showing } = this.state;
-    let title = this.state.title;
     return(
       <div className="Questionnaire">
-        <h1>{title}</h1> 
         <form onSubmit={this.handleSubmit}>
-        <h2>SUBJECT</h2> 
-
+         
+        <br/>
           <div>
-                <button onClick={() => this.setState({ showing: !showing })}>Toggle</button>
+                <button onClick={() => this.setState({ showing: !showing })}><h1>QUESTIONNAIRE</h1></button>
                 <div style={{ display: (showing ? 'block' : 'none') }}>
                 <br />
                   <label>
@@ -685,9 +744,417 @@ class Questionnaire extends Component{
                     Severe
                   </label>
                 </div>
+
+                <br/>
+                <p> Fatigue </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.fatigue_b === "0"} onChange={(event)=>this.handleChange(event, "fatigue_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.fatigue_b === "1"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.fatigue_b  === "2"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.fatigue_b === "3"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Headache </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.headache_b === "0"} onChange={(event)=>this.handleChange(event, "headache_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.headache_b === "1"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.headache_b  === "2"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.headache_b === "3"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Eye strain </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.eyestrain_b === "0"} onChange={(event)=>this.handleChange(event, "eyestrain_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.eyestrain_b === "1"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.eyestrain_b  === "2"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.eyestrain_b === "3"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Difficulty focusing or concentrating </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.diffoffocus_b === "0"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.diffoffocus_b === "1"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.diffoffocus_b  === "2"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.diffoffocus_b === "3"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Increased saliva </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.increasedsaliva_b === "0"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.increasedsaliva_b === "1"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.increasedsaliva_b  === "2"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.increasedsaliva_b === "3"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Sweating </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.sweating_b === "0"} onChange={(event)=>this.handleChange(event, "sweating_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.sweating_b === "1"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.sweating_b  === "2"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.sweating_b === "3"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Nausea </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.nausea_b === "0"} onChange={(event)=>this.handleChange(event, "nausea_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.nausea_b === "1"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.nausea_b  === "2"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.nausea_b === "3"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Blurred vision </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.blurredvis_b === "0"} onChange={(event)=>this.handleChange(event, "blurredvis_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.blurredvis_b === "1"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.blurredvis_b  === "2"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.blurredvis_b === "3"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Dizziness or vertigo </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.dizziness_b === "0"} onChange={(event)=>this.handleChange(event, "dizziness_b")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.dizziness_b === "1"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.dizziness_b  === "2"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.dizziness_b === "3"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
+                    Severe
+                  </label>
+                </div>
+
+                
           </div>
           <br />
           <br />
+
+          <div>
+            <label> Now after the virtual reality experience please indicate how you are feeling. </label>
+            <p> General discomfort </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.gendis_a === "0"} onChange={(event)=>this.handleChange(event, "gendis_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.gendis_a === "1"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.gendis_a  === "2"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.gendis_a === "3"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Fatigue </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.fatigue_a === "0"} onChange={(event)=>this.handleChange(event, "fatigue_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.fatigue_a === "1"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.fatigue_a  === "2"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.fatigue_a === "3"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Headache </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.headache_a === "0"} onChange={(event)=>this.handleChange(event, "headache_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.headache_a === "1"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.headache_a  === "2"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.headache_a === "3"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Eye strain </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.eyestrain_a === "0"} onChange={(event)=>this.handleChange(event, "eyestrain_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.eyestrain_a === "1"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.eyestrain_a  === "2"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.eyestrain_a === "3"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Difficulty focusing or concentrating </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.diffoffocus_a === "0"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.diffoffocus_a === "1"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.diffoffocus_a  === "2"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.diffoffocus_a === "3"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Increased saliva </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.increasedsaliva_a === "0"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.increasedsaliva_a === "1"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.increasedsaliva_a  === "2"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.increasedsaliva_a === "3"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Sweating </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.sweating_a === "0"} onChange={(event)=>this.handleChange(event, "sweating_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.sweating_a === "1"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.sweating_a  === "2"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.sweating_a === "3"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Nausea </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.nausea_a === "0"} onChange={(event)=>this.handleChange(event, "nausea_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.nausea_a === "1"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.nausea_a  === "2"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.nausea_a === "3"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Blurred vision </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.blurredvis_a === "0"} onChange={(event)=>this.handleChange(event, "blurredvis_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.blurredvis_a === "1"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.blurredvis_a  === "2"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.blurredvis_a === "3"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                <br/>
+                <p> Dizziness or vertigo </p>
+                <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
+                  <label>
+                    <input type="radio" value="0" checked={this.state.dizziness_a === "0"} onChange={(event)=>this.handleChange(event, "dizziness_a")} />
+                    None
+                  </label>
+                  <label>
+                    <input type="radio" value="1" checked={this.state.dizziness_a === "1"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
+                    Slight
+                  </label>
+                  <label>
+                    <input type="radio" value="2" checked={this.state.dizziness_a  === "2"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
+                    Moderate
+                  </label>
+                  <label>
+                    <input type="radio" value="3" checked={this.state.dizziness_a === "3"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
+                    Severe
+                  </label>
+                </div>
+
+                
+          </div>
+          <br />
+ 
+          {/* <div dangerouslySetInnerHTML={mshtml} /> */}
 
 
           <input type="submit" value="Submit"/>
