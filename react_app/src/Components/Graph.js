@@ -53,13 +53,41 @@ const Graph = (props) => {
               .then((res) => res.json())
               .then((result) => {
                   graphData.push(result)
+                  console.log(graphData)
+                  
+                  for (var i=0;i<graphData.length; i++)
+                  {
+                    for (var j=0;j<graphData[i].length;j++)
+                    {
+                      if(graphData[i][j].interval==0)
+                      {
+                        graphData[i][j].interval='pre'
+                      }
+                      else if(graphData[i][j].interval==1)
+                      {
+                        graphData[i][j].interval='25'
+                      }
+                      else if(graphData[i][j].interval==2)
+                      {
+                        graphData[i][j].interval='50'
+                      }
+                      else if(graphData[i][j].interval==3)
+                      {
+                        graphData[i][j].interval='75'
+                      }
+                      else if(graphData[i][j].interval==4)
+                      {
+                        graphData[i][j].interval='post'
+                      }
+                    }
+                  }
                   counter--
                   if (counter==0)
                   { 
-                    
+                    // label={{ value: props.xasis, position: "outsideMiddle", dy: 13, dx: 0}}
                     graph = (<LineChart width={900} height={400}  data={graphData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis  dataKey={props.xasis} allowDuplicatedCategory={false}  label={{ value: props.xasis, position: "outsideMiddle", dy: 13, dx: 0}}/>
+                    <XAxis  dataKey={props.xasis} allowDuplicatedCategory={false}  label={{ value: props.xasis, position: "outsideMiddle", dy: 13, dx: 0}} />
                     <YAxis  dataKey={props.yasis}  domain={props.ydom} label={{ value: props.title, position: "outsideMiddle", angle: -90, dx: -20}}/>
                     <Tooltip />
                     <Legend />
