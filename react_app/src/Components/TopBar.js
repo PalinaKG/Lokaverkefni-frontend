@@ -28,6 +28,7 @@ export default function TopBar(props) {
           {props.isAuthenticated ? <Button color="inherit" href="/update_password">Update Password</Button> : null}
           {props.isAuthenticated ? <Button color="inherit" href="/import_data">Import data</Button> : null}
           {props.isAuthenticated ? <Button color="inherit" href="/questionnaire">Questionnaire</Button> : null}
+          {props.isAuthenticated ? <Button color="inherit" href="/results/hr">Get Results</Button> : null}
           {props.isAuthenticated ? <Button color="inherit" onClick={() => props.logout()}>Logout</Button> : null}
         </Toolbar>
       </AppBar>

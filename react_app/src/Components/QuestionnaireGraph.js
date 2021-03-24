@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Label} from 'react'
+import React, { useEffect, useState} from 'react'
 import { API_SERVER } from '../settings';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid} from "recharts";
 import randomColor from 'randomcolor'
@@ -8,11 +8,13 @@ var subID = []
 var graphData = []
 var counter = 0
 var graph = <CircularProgress></CircularProgress>
+var i = 0
 
-const Graph = (props) => {
+const QGraph = (props) => {
     const [loaded, setLoaded] = useState(false);
     var counter = 0
     var graphData = []
+    var i = 0
       useEffect(() => {
         subID = []
         
@@ -42,6 +44,7 @@ const Graph = (props) => {
 
         const fetchHR = () => {
           graphData = []
+          
           subID.forEach(subjectID => {
             fetch(API_SERVER + "/api/" + props.link + subjectID, {
               method: "GET",
@@ -53,18 +56,22 @@ const Graph = (props) => {
               .then((res) => res.json())
               .then((result) => {
                   graphData.push(result)
+                  console.log(graphData)
                   counter--
                   if (counter==0)
                   { 
                     
-                    graph = (<LineChart width={900} height={400}  data={graphData}>
+                    graph = (<LineChart width={800} height={400} data={graphData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis  dataKey={props.xasis} allowDuplicatedCategory={false}  label={{ value: props.xasis, position: "outsideMiddle", dy: 13, dx: 0}}/>
-                    <YAxis  dataKey={props.yasis}  domain={props.ydom} label={{ value: props.title, position: "outsideMiddle", angle: -90, dx: -20}}/>
+                    <XAxis dataKey={props.xasis} allowDuplicatedCategory={false}/>
+                    <YAxis  dataKey={props.yasis}  domain={props.ydom}/>
                     <Tooltip />
                     <Legend />
                     {graphData.map((s) => (
-                    <Line stroke={randomColor()} dataKey={props.yasis} data={s} name={"subjectid: " + s[0].subjectid} key={s[0].subjectid + props.yasis} />
+                        // console.log("HELLO1", s) +
+                        // console.log("HELLO2", props.yasis[3]) +
+                    <Line stroke={randomColor()} dataKey={props.yasis} data={s} name={"subjectid: " + s[0].subjectid} key={s[0].subjectid + props.yasis[3]}  /> 
+                
                       ))}
                   </LineChart>)
                   setLoaded(true)
@@ -74,13 +81,15 @@ const Graph = (props) => {
                   console.log("ERROR: " + err)
               });
           })
+          
         }
 
         return (
-            <div style={{marginLeft : '250px'}}>
-              {!loaded && <CircularProgress   style={{marginLeft : '35%', marginTop: '150px'}} ></CircularProgress>}
+            <div>
+              {!loaded && <CircularProgress style={{marginLeft : "50%"}}></CircularProgress>}
+              {loaded && console.log(graph)}
               {loaded && graph}
             </div>
           );
 }
-export default Graph
+export default QGraph

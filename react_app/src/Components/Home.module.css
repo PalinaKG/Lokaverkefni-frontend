@@ -1,5 +1,16 @@
 .inputFields {
-    width: 700px;
+    width: 500px;
     display: flex;
     /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
+}
+
+.container {
+    margin-top: 60px;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+}
+
+.title {
+    text-align: center;
 }
