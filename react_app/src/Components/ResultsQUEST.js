@@ -1,162 +1,342 @@
-import React, { useState} from 'react';
-import Graph from './Graph';
+import React, { useState, useEffect} from 'react';
 import styles from './Home.module.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
-import { Button, CircularProgress, Input } from '@material-ui/core';
-import QGraph from './QuestionnaireGraph';
+import { Button} from '@material-ui/core';
+import { API_SERVER } from '../settings';
+import { CircularProgress } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { CartesianGrid, BarChart, Bar, XAxis, YAxis} from "recharts";
+
+var subID1 = []
+var subID2 = []
+var type = []
+var res1 = 0
+var res2 = 0
+var res3 = 0
+var res4 = 0
+var res5 = 0
+var res6 = 0
+const data0 = []
+const data1 = []
+const data2 = []
+var msGoldenValue = ""
+var nauseaValue = ""
+// var graph0 = <CircularProgress></CircularProgress>
+// var graph1 = <CircularProgress></CircularProgress>
+// var graph2 = <CircularProgress></CircularProgress>
+var graph0 = ""
+var graph1 = ""
+var graph2 = ""
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      width: 200,
+      maxWidth: 360,
+    },
+  }));
+
+function ListItemLink(props) {
+    return <ListItem button component="a" {...props} />;
+  }
+
+const ResultsQuest = (props) => {
+    const [loaded0, setLoaded0] = useState(false);
+    const [loaded1, setLoaded1] = useState(false);
+    const [loaded2, setLoaded2] = useState(false);
+    const classes = useStyles();
+
+    useEffect(() => {
+        
+        fetch(API_SERVER + "/api/generalinfo/", {
+            method: "GET",
+            headers: {
+              Authorization: `JWT ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((result) => {
+                subID1 = []
+                subID2 = []
+                res1 = 0
+                res2 = 0
+                res3 = 0
+                res4 = 0
+                res5 = 0
+                res6 = 0
+  
+                result.forEach(element => {
+                    if (element.groups == "0")
+                    {
+                        subID1.push(element.subjectid)
+                    }
+                    else {
+                        subID2.push(element.subjectid)
+                    }
+                  });
 
 
 
-const Home = (props) => {
-    const [birthyear1, setBirthyear1] = useState("")
-    const [birthyear2, setBirthyear2] = useState("")
-    const [gender, setGender] = useState("")
-    const [loaded, setLoaded] = useState(false);
-    const [sensor, setSensor] = useState("");
 
-    var birthyears = []
-    for (var i = 2020; i>= 1900; i--)
-    {
-        birthyears.push(i)
-    }
+                  fetch(API_SERVER + "/api/msgolden/?type=0", {
+                    method: "GET",
+                    headers: {
+                      Authorization: `JWT ${localStorage.getItem("token")}`,
+                      "Content-Type": "application/json",
+                    },
+                  })
+                    .then((res) => res.json())
+                    .then((result) => {
+                        for (let res of result)
+                        {
+                            for (let sub of subID1)
+                            {
+                                if (res.subjectid == sub)
+                                {
+                                    res1 = res1 + res[msGoldenValue]
+                                }
+                            }
+                            for (let sub of subID2)
+                            {
+                                if (res.subjectid == sub)
+                                {
+                                    res2 = res2 + res[msGoldenValue]
+                                }
+                            }
+                        }
+                        data0[0] = {group: "No concussion", res: (res1 / subID1.length)}  //Not concussion
+                        data0[1] = {group: "Concussion", res: (res2 / subID2.length)}  //Concussion
+                        graph0 = (
+                        
+                            <div style = {{width: "400px"}} >
+                                <p>{msGoldenValue} - pre</p>
+                        <BarChart width={300} height={300} data={data0} margin={{left: 50}} barSize={40} >
+                            <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
+                            <YAxis />
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <Bar dataKey="res" fill="#8884d8" />
+                        </BarChart>
+                        </div>
+                        
+                        )
+                        setLoaded0(true)
+             
+                    })
+                    .catch((err) => {
+                        console.log("ERROR" + err)
+                    });
 
 
-    function handleSensor(e)
+
+
+
+
+
+
+                  fetch(API_SERVER + "/api/msgolden/?type=1", {
+                    method: "GET",
+                    headers: {
+                      Authorization: `JWT ${localStorage.getItem("token")}`,
+                      "Content-Type": "application/json",
+                    },
+                  })
+                    .then((res) => res.json())
+                    .then((result) => {
+                        for (let res of result)
+                        {
+                            for (let sub of subID1)
+                            {
+                                if (res.subjectid == sub)
+                                {
+                                    res3 = res3 + res[msGoldenValue]
+                                }
+                            }
+                            for (let sub of subID2)
+                            {
+                                if (res.subjectid == sub)
+                                {
+                                    res4 = res4 + res[msGoldenValue]
+                                }
+                            }
+                        }
+                        data1[0] = {group: "No concussion", res: (res3 / subID1.length)}  //Not concussion
+                        data1[1] = {group: "Concussion", res: (res4 / subID2.length)}  //Concussion
+                        console.log("HELLOOOO")
+                        console.log(data1)
+                        
+                        graph1 = (
+                        
+                            <div style = {{width: "400px"}} >
+                                <p>{msGoldenValue} - post</p>
+                        <BarChart width={300} height={300} data={data1} margin={{left: 50}} barSize={40} >
+                            <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
+                            <YAxis />
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <Bar dataKey="res" fill="#8884d8" />
+                        </BarChart>
+                        </div>
+                        
+                        )
+                        setLoaded1(true)
+                        console.log(graph1)
+             
+                    })
+                    .catch((err) => {
+                        console.log("ERROR" + err)
+                    });
+
+
+
+
+
+                    fetch(API_SERVER + "/api/nausea/", {
+                        method: "GET",
+                        headers: {
+                          Authorization: `JWT ${localStorage.getItem("token")}`,
+                          "Content-Type": "application/json",
+                        },
+                      })
+                        .then((res) => res.json())
+                        .then((result) => {
+                            for (let res of result)
+                            {
+                                for (let sub of subID1)
+                                {
+                                    if (res.subjectid == sub)
+                                    {
+                                        res5 = res5 + res[nauseaValue]
+                                    }
+                                }
+                                for (let sub of subID2)
+                                {
+                                    if (res.subjectid == sub)
+                                    {
+                                        res6 = res6 + res[nauseaValue]
+                                    }
+                                }
+                            }
+                            data2[0] = {group: "No concussion", res: (res5 / subID1.length)}  //Not concussion
+                            data2[1] = {group: "Concussion", res: (res6 / subID2.length)}  //Concussion
+                            graph2 = (
+                            <div style = {{width: "400px"}} >
+
+                                <p>{nauseaValue}</p>       
+                            <BarChart width={300} height={300} data={data2} margin={{left: 50}} barSize={40} >
+                                <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
+                                <YAxis />
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <Bar dataKey="res" fill="#8884d8" />
+                            </BarChart>
+                            </div>
+                            )
+                            setLoaded2(true)
+                 
+                        })
+                        .catch((err) => {
+                            console.log("ERROR" + err)
+                        });
+     
+
+
+
+
+
+            })
+            .catch((err) => {
+                console.log("ERROR" + err)
+            });
+
+          
+        }, [props, msGoldenValue, nauseaValue]);
+        
+
+   function handleMSGolden(e)
    {
-        setLoaded(false)
+        msGoldenValue = e.target.value
+        setLoaded0(false)
+        setLoaded1(false)
 
-        if (e.target.value == 0)
-        {
-            setSensor("")  
-        }
-        else {
-            setSensor(e.target.value)  
-        }   
    }
 
-    function handleGender(e)
+   function handleNausea(e)
    {
-        setLoaded(false)
+        nauseaValue = e.target.value
+        setLoaded2(false)
 
-        if (e.target.value == 2)
-        {
-            setGender("")  
-        }
-        else {
-            setGender(e.target.value)  
-        }   
-   }
-
-   function handleGender(e)
-   {
-        setLoaded(false)
-
-        if (e.target.value == 2)
-        {
-            setGender("")  
-        }
-        else {
-            setGender(e.target.value)  
-        }   
-   }
- 
-
-   function handleBirthyear1(e)
-   {
-        setLoaded(false)
-
-        if (e.target.value == 0)
-        {
-            setBirthyear1("")  
-        }
-        else {
-            setBirthyear1(e.target.value)  
-        }
-   }
-
-   function handleBirthyear2(e)
-   {
-    setLoaded(false)
-
-    if (e.target.value == 0)
-        {
-            setBirthyear2("")  
-        }
-        else {
-            setBirthyear2(e.target.value)  
-        }
    }
 
    
-
-   function button1Clicked()
-   {
-       setLoaded(true)
-
-   }
-
-
 
 
 
 
     return (
         <div>
-            {/* <div className = {styles.inputFields}>
-            <InputLabel style={{marginRight: 10, marginTop: 7}}>Birthyear from: </InputLabel>
-            <Select value={birthyear1} onChange={handleBirthyear1}>
-                <MenuItem value={0}>None</MenuItem>
-                {birthyears.map((s) => (
-                    <MenuItem value={s}>{s}</MenuItem>
-                ))}
-            </Select>
-            <InputLabel style={{ marginLeft: 20, marginRight: 10, marginTop: 7}} >to: </InputLabel>
-            <Select value={birthyear2} onChange={handleBirthyear2}>
-                <MenuItem value={0}>None</MenuItem>
-                {birthyears.map((s) => (
-                    <MenuItem value={s}>{s}</MenuItem>
-                ))}
-            </Select>
-            <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 7}}>Gender: </InputLabel>
-            <Select value={gender} onChange={handleGender}>
-                <MenuItem value={2}>None</MenuItem>
-                <MenuItem value={0}>Female</MenuItem>
-                <MenuItem value={1}>Male</MenuItem>
-            </Select>
-            <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 7}}>Sensor: </InputLabel>
-            <Select value={sensor} onChange={handleSensor}>
-                <MenuItem value={0}>None</MenuItem>
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-                <MenuItem value={4}>4</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
-                <MenuItem value={6}>6</MenuItem>
-            </Select>
+            <div className={styles.container}>         
+                <div className={classes.root}>
+                    <List component="nav" aria-label="main mailbox folders">
+                        <ListItemLink href="/results/hr">
+                        <ListItemText primary="HR" />
+                        </ListItemLink>
+                        <ListItemLink href="/results/emg">
+                        <ListItemText primary="EMG" />
+                        </ListItemLink>
+                        <ListItemLink href="/results/quest">
+                        <ListItemText primary="Questionnaire" />
+                        </ListItemLink>
+                    </List>
+                </div>
+                
+
+                <div className = {styles.inputFields}>
+                <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 45}} >Golden Standars: </InputLabel>
+                <Select value={msGoldenValue} onChange={handleMSGolden}>
+                    <MenuItem value={'fatigue'}>Fatigue</MenuItem>
+                    <MenuItem value={'headache'}>Headache</MenuItem>
+                    <MenuItem value={'eyestrain'}>Eyestrain</MenuItem>
+                    <MenuItem value={'incrsalvation'}>IncreasedSalvation</MenuItem>
+                    <MenuItem value={'blurredvision'}>BlurredVision</MenuItem>
+                    <MenuItem value={'diffoffocus'}>DiffOfFocus</MenuItem>
+                    <MenuItem value={'sweat'}>Sweat</MenuItem>
+                    <MenuItem value={'nausea'}>Nausea</MenuItem>
+                    <MenuItem value={'dizziness'}>Dizziness</MenuItem>
+                    <MenuItem value={'gendiscomfort'}>GeneralDiscomfort</MenuItem>
+                </Select>
+                <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 45}} >Nausea: </InputLabel>
+                <Select value={nauseaValue} onChange={handleNausea}>
+                    <MenuItem value={'trains'}>Trains</MenuItem>
+                    <MenuItem value={'airplanes'}>Airplanes</MenuItem>
+                    <MenuItem value={'smallboats'}>Smallboats</MenuItem>
+                    <MenuItem value={'ships'}>Ships</MenuItem>
+                    <MenuItem value={'swings'}>Swings</MenuItem>
+                    <MenuItem value={'roundabout'}>Roundabout</MenuItem>
+                    <MenuItem value={'funfair'}>Funfair</MenuItem>
+                    <MenuItem value={'busses'}>Busses</MenuItem>
+                    <MenuItem value={'cars'}>Cars</MenuItem>
+                </Select>
+                </div>             
             </div>
-            
-            <Button style={{ width: 10}} onClick={button1Clicked}>
-                Search
-            </Button>
-
-            <div styles = {{height : "1000px"}}>
-
-        
-            <div>
-                {loaded && 
-                    <QGraph ydom={[0, 3]} xasis="type"  yasis={['msgoldenid', 'subjectid', 'type', 'dizziness', 'nausea', 'sweat', 'diffoffocus', 'blurredvision', 'incrsalvation', 'eyestrain','headache', 'fatigue','gendiscomfort']}  birthyear1={birthyear1}  birthyear2={birthyear2}  gender={gender}  link={ "msgolden/?subjectid="} ></QGraph>
-                }
-            </div>
-
-            </div> */}
-            
+                <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
+                    {/* {loaded0 && graph0}
+                    {loaded1 && graph1}
+                    {loaded2 && graph2} */}
+                    {graph0}
+                    {graph1}
+                    {graph2}
+                    
+                </div> 
         </div>
     )
 }
 
             
 
-export default Home
+export default ResultsQuest
+
 

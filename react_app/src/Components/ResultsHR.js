@@ -23,7 +23,7 @@ function ListItemLink(props) {
     return <ListItem button component="a" {...props} />;
   }
 
-const Home = (props) => {
+const ResultsHR = (props) => {
     const [birthyear1, setBirthyear1] = useState("")
     const [birthyear2, setBirthyear2] = useState("")
     const [gender, setGender] = useState("")
@@ -115,6 +115,9 @@ const Home = (props) => {
                     <ListItemLink href="/results/emg">
                     <ListItemText primary="EMG" />
                     </ListItemLink>
+                    <ListItemLink href="/results/quest">
+                    <ListItemText primary="Questionnaire" />
+                    </ListItemLink>
                 </List>
             </div>
             
@@ -165,5 +168,5 @@ const Home = (props) => {
 
             
 
-export default Home
+export default ResultsHR
 

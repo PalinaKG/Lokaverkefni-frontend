@@ -73,7 +73,7 @@ const postData = (d) =>
             else if (res.status == 404)
             {
                 setMessageType("error")
-                setMessage(res.statusText + ": Check if the subjects being added exist in the database")
+                setMessage(res.statusText + ": Check if the subjects exists")
                 setLoaded(true)
                 setOpen(true)
 
@@ -126,7 +126,8 @@ const handleFiles = files => {
     return (
         <div>
             <ReactFileReader handleFiles={handleFiles} fileTypes={'.csv'} >
-                <button className='btn'>Upload</button>
+              <h1>Click here to upload the file</h1>
+                <button style={{marginLeft : '5%'}} className='btn'>Upload</button>
             </ReactFileReader>
             <div className={classes.root}>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

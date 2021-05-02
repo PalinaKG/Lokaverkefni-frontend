@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.innerContainer {
+    display: block;
+    justify-content: left;
+    width: 500px;
+    text-align: left;
+}
+
+.subContainer {
+    display: block;
+    justify-content: center;
+    width: 300px;
+    text-align: left;
+}

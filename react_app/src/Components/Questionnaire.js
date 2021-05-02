@@ -2,7 +2,7 @@ import React, { Component }from 'react';
 import axios from 'axios';
 import * as settings from '../settings';
 import { API_SERVER } from '../settings';
-
+import styles from './Questionnaire.module.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Container, CssBaseline, TextField, Typography } from '@material-ui/core';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -233,14 +233,14 @@ class Questionnaire extends Component{
   render(){
     const { showing } = this.state;
     return(
-      <div className="Questionnaire">
+      // <div className="Questionnaire">
+      <div className={styles.container}>
+        <div className={styles.innerContainer}>
         <form onSubmit={this.handleSubmit}>
          
-        <br/>
           <div>
                 <button onClick={() => this.setState({ showing: !showing })}><h1>QUESTIONNAIRE</h1></button>
                 <div style={{ display: (showing ? 'block' : 'none') }}>
-                <br />
                   <label>
                     SubjectID:
                     <input type="text" required value={this.state.subjectID} onChange={(event)=>this.handleChange(event, "subjectID")} />
@@ -251,7 +251,6 @@ class Questionnaire extends Component{
                     <select required value={this.state.groups} onChange={(event)=>this.handleChange(event, "groups")}>
                       <option value="1">Concussion</option>
                       <option value="0">Healthy</option>
-                      <option value="2">Sailors</option>
                     </select>
                   </label>
                 </div>
@@ -1163,6 +1162,7 @@ class Questionnaire extends Component{
           <br />
 
         </form>
+        </div>
       </div>
     )
   }

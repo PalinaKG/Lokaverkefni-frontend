@@ -7,7 +7,7 @@ import ImportData from "./Components/Import_data";
 import Questionnaire from "./Components/Questionnaire";
 import ResultsHR from "./Components/ResultsHR"
 import ResultsEMG from "./Components/ResultsEMG"
-import ResultsQUEST from "./Components/ResultsQUEST"
+import ResultsQuest from "./Components/ResultsQuest"
 
 // A wrapper for <Route> that redirects to the login screen if you're not yet authenticated.
 function PrivateRoute({ isAuthenticated, children, ...rest}) {
@@ -42,7 +42,7 @@ function Urls(props) {
                     <PrivateRoute exact path="/questionnaire" isAuthenticated={props.isAuthenticated}><Questionnaire {...props}/></PrivateRoute>
                     <PrivateRoute exact path="/results/hr" isAuthenticated={props.isAuthenticated}><ResultsHR {...props}/></PrivateRoute>
                     <PrivateRoute exact path="/results/emg" isAuthenticated={props.isAuthenticated}><ResultsEMG {...props}/></PrivateRoute>
-                    <PrivateRoute exact path="/results/quest" isAuthenticated={props.isAuthenticated}><ResultsQUEST {...props}/></PrivateRoute>
+                    <PrivateRoute exact path="/results/quest" isAuthenticated={props.isAuthenticated}><ResultsQuest {...props}/></PrivateRoute>
                     <PrivateRoute exact path="" isAuthenticated={props.isAuthenticated}><Home {...props}/></PrivateRoute>
                 </Switch>
             </BrowserRouter>
