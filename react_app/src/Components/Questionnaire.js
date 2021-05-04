@@ -1,5 +1,6 @@
 import React, { Component }from 'react';
 import axios from 'axios';
+import Radio from '@material-ui/core/Radio';
 import * as settings from '../settings';
 import { API_SERVER } from '../settings';
 import styles from './Questionnaire.module.css';
@@ -264,11 +265,24 @@ class Questionnaire extends Component{
               <option value="2">Other</option>
             </select>
           </label>
+          <br/>
+          <br/>
+          <label>
+            Birthyear:  
+            <input type="number" required value={this.state.birthyear} onChange={(event)=>this.handleChange(event, "birthyear")} min="1900" max="2020"/>
+          </label>
           <br />
           <br/>
           <label>
-            Height:
-            <input type="number" required value={this.state.height} onChange={(event)=>this.handleChange(event, "height")} />
+            Height:  
+            <input type="number" required value={this.state.height} onChange={(event)=>this.handleChange(event, "height")} min="100" max="300" />
+          </label>
+          <br />
+          <br />
+          {/* <h2>GENERAL INFORMATION</h2>  */}
+          <label>
+            Weight:  
+            <input type="number" required value={this.state.weight} onChange={(event)=>this.handleChange(event, "weight")} min="30" max="200" />
           </label>
           <br/>
           <br/>
@@ -278,21 +292,6 @@ class Questionnaire extends Component{
               <option value="0">Left-handed</option>
             </select>
           </label>
-          <br/>
-          <br/>
-          <label>
-            Birthyear:
-            <input type="number" required value={this.state.birthyear} onChange={(event)=>this.handleChange(event, "birthyear")}/>
-          </label>
-
-          <br />
-          <br />
-          <h2>GENERAL INFORMATION</h2> 
-          <label>
-            Weight:
-            <input type="number" required value={this.state.weight} onChange={(event)=>this.handleChange(event, "weight")} />
-          </label>
-
           <br />
           <br />
 
@@ -300,25 +299,25 @@ class Questionnaire extends Component{
             How long has it been since you last ate?
               <div className="radio">
               <label>
-                <input type="radio" value="0" checked={this.state.foodTime === "0"} onChange={(event)=>this.handleChange(event, "foodTime")} />
+                <input type="radio" value="0" name="food" required checked={this.state.foodTime === "0"} onChange={(event)=>this.handleChange(event, "foodTime")} />
                 Less than an hour
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="1" checked={this.state.foodTime === "1"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
+                <input type="radio" value="1" name="food" checked={this.state.foodTime === "1"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
                 Between one and two hours
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="2" checked={this.state.foodTime  === "2"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
+                <input type="radio" value="2" name="food"checked={this.state.foodTime  === "2"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
                 Between two and three hours
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="3" checked={this.state.foodTime === "3"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
+                <input type="radio" value="3" name="food" checked={this.state.foodTime === "3"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
                 More than three hours
               </label>
             </div>
@@ -328,31 +327,31 @@ class Questionnaire extends Component{
             How healthy do you consider yourself?
               <div className="radio">
               <label>
-                <input type="radio" value="5" checked={this.state.healthyScale === "5"} onChange={(event)=>this.handleChange(event, "healthyScale")} />
+                <input type="radio" value="5" name="healthy" required checked={this.state.healthyScale === "5"} onChange={(event)=>this.handleChange(event, "healthyScale")} />
                 Very healthy
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="4" checked={this.state.healthyScale === "4"} onChange={(event)=>this.handleChange(event, "healthyScale")}/>
+                <input type="radio" value="4" name="healthy" checked={this.state.healthyScale === "4"} onChange={(event)=>this.handleChange(event, "healthyScale")}/>
                 Healthy
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="3" checked={this.state.healthyScale  === "3"} onChange={(event)=>this.handleChange(event, "healthyScale")}/>
+                <input type="radio" value="3" name="healthy" checked={this.state.healthyScale  === "3"} onChange={(event)=>this.handleChange(event, "healthyScale")}/>
                 Neutral
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="2" checked={this.state.healthyScale === "2"} onChange={(event)=>this.handleChange(event, "healthyScale")}/>
+                <input type="radio" value="2" name="healthy" checked={this.state.healthyScale === "2"} onChange={(event)=>this.handleChange(event, "healthyScale")}/>
                 Unhealthy
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="1" checked={this.state.healthyScale === "1"} onChange={(event)=>this.handleChange(event, "healthyScale")}/>
+                <input type="radio" value="1" name="healthy" checked={this.state.healthyScale === "1"} onChange={(event)=>this.handleChange(event, "healthyScale")}/>
                 Very unhealthy
               </label>
             </div>
@@ -364,31 +363,31 @@ class Questionnaire extends Component{
             How often a week do you practice any kind of physical activity?
               <div className="radio">
               <label>
-                <input type="radio" value="0" checked={this.state.noExercise === "0"} onChange={(event)=>this.handleChange(event, "noExercise")} />
+                <input type="radio" value="0" name="physical" required checked={this.state.noExercise === "0"} onChange={(event)=>this.handleChange(event, "noExercise")} />
                 Never
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="1" checked={this.state.noExercise === "1"} onChange={(event)=>this.handleChange(event, "noExercise")}/>
+                <input type="radio" value="1" name="physical" checked={this.state.noExercise === "1"} onChange={(event)=>this.handleChange(event, "noExercise")}/>
                 Once or twice a week
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="2" checked={this.state.noExercise  === "2"} onChange={(event)=>this.handleChange(event, "noExercise")}/>
+                <input type="radio" value="2" name="physical" checked={this.state.noExercise  === "2"} onChange={(event)=>this.handleChange(event, "noExercise")}/>
                 Three to four times a week
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="3" checked={this.state.noExercise === "3"} onChange={(event)=>this.handleChange(event, "noExercise")}/>
+                <input type="radio" value="3" name="physical" checked={this.state.noExercise === "3"} onChange={(event)=>this.handleChange(event, "noExercise")}/>
                 Five to six times a week
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="4" checked={this.state.noExercise === "4"} onChange={(event)=>this.handleChange(event, "noExercise")}/>
+                <input type="radio" value="4" name="physical" checked={this.state.noExercise === "4"} onChange={(event)=>this.handleChange(event, "noExercise")}/>
                 Everyday
               </label>
             </div>
@@ -420,25 +419,25 @@ class Questionnaire extends Component{
             How recently have you indulged alcohol?
               <div className="radio">
               <label>
-                <input type="radio" value="0" checked={this.state.alcohol === "0"} onChange={(event)=>this.handleChange(event, "alcohol")} />
+                <input type="radio" value="0" name="alcohol" required checked={this.state.alcohol === "0"} onChange={(event)=>this.handleChange(event, "alcohol")} />
                 Today
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="1" checked={this.state.alcohol === "1"} onChange={(event)=>this.handleChange(event, "alcohol")}/>
+                <input type="radio" value="1" name="alcohol" checked={this.state.alcohol === "1"} onChange={(event)=>this.handleChange(event, "alcohol")}/>
                 Yesterday
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="2" checked={this.state.alcohol  === "2"} onChange={(event)=>this.handleChange(event, "alcohol")}/>
+                <input type="radio" value="2" name="alcohol" checked={this.state.alcohol  === "2"} onChange={(event)=>this.handleChange(event, "alcohol")}/>
                 More than two days ago
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="3" checked={this.state.alcohol === "3"} onChange={(event)=>this.handleChange(event, "alcohol")}/>
+                <input type="radio" value="3" name="alcohol" checked={this.state.alcohol === "3"} onChange={(event)=>this.handleChange(event, "alcohol")}/>
                 I don't drink alcohol
               </label>
             </div>
@@ -450,25 +449,25 @@ class Questionnaire extends Component{
             Do you experience motion sickness?
               <div className="radio">
               <label>
-                <input type="radio" value="0" checked={this.state.motionsickness === "0"} onChange={(event)=>this.handleChange(event, "motionsickness")} />
+                <input type="radio" value="0" name="ms" required checked={this.state.motionsickness === "0"} onChange={(event)=>this.handleChange(event, "motionsickness")} />
                 No, never
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="1" checked={this.state.motionsickness === "1"} onChange={(event)=>this.handleChange(event, "motionsickness")}/>
+                <input type="radio" value="1" name="ms" checked={this.state.motionsickness === "1"} onChange={(event)=>this.handleChange(event, "motionsickness")}/>
                 Yes, but rarely
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="2" checked={this.state.motionsickness  === "2"} onChange={(event)=>this.handleChange(event, "motionsickness")}/>
+                <input type="radio" value="2" name="ms" checked={this.state.motionsickness  === "2"} onChange={(event)=>this.handleChange(event, "motionsickness")}/>
                 Yes, a few times
               </label>
             </div>
             <div className="radio">
               <label>
-                <input type="radio" value="3" checked={this.state.motionsickness === "3"} onChange={(event)=>this.handleChange(event, "motionsickness")}/>
+                <input type="radio" value="3" name="ms" checked={this.state.motionsickness === "3"} onChange={(event)=>this.handleChange(event, "motionsickness")}/>
                 Yes, often
               </label>
             </div>
@@ -488,39 +487,39 @@ class Questionnaire extends Component{
           <br/>
           <label>
             Any comments?
-            <input type="text" required value={this.state.comments} onChange={(event)=>this.handleChange(event, "comments")} />
+            <input type="text" value={this.state.comments} onChange={(event)=>this.handleChange(event, "comments")} />
           </label>
 
           <br />
           <br />
 
-          <h2>NAUSEA</h2> 
+          {/* <h2>NAUSEA</h2>  */}
 
           <div>
-            <label>
+            <label><h3>
             For each of the following types of transport or entertainment, please indicate how often you have felt sick or nauseated.
-            </label>
+            </h3></label>
             <br />
             <p> Cars </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.cars === "0"} onChange={(event)=>this.handleChange(event, "cars")} />
+                  <input type="radio" value="0" name="cars" required checked={this.state.cars === "0"} onChange={(event)=>this.handleChange(event, "cars")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.cars === "1"} onChange={(event)=>this.handleChange(event, "cars")}/>
+                  <input type="radio" value="1" name="cars" checked={this.state.cars === "1"} onChange={(event)=>this.handleChange(event, "cars")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.cars  === "2"} onChange={(event)=>this.handleChange(event, "cars")}/>
+                  <input type="radio" value="2" name="cars" checked={this.state.cars  === "2"} onChange={(event)=>this.handleChange(event, "cars")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.cars === "3"} onChange={(event)=>this.handleChange(event, "cars")}/>
+                  <input type="radio" value="3" name="cars" checked={this.state.cars === "3"} onChange={(event)=>this.handleChange(event, "cars")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.cars === "4"} onChange={(event)=>this.handleChange(event, "cars")}/>
+                  <input type="radio" value="4" name="cars" checked={this.state.cars === "4"} onChange={(event)=>this.handleChange(event, "cars")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -528,23 +527,23 @@ class Questionnaire extends Component{
             <p> Busses </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.busses === "0"} onChange={(event)=>this.handleChange(event, "busses")} />
+                  <input type="radio" value="0" name="busses" required checked={this.state.busses === "0"} onChange={(event)=>this.handleChange(event, "busses")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.busses === "1"} onChange={(event)=>this.handleChange(event, "busses")}/>
+                  <input type="radio" value="1" name="busses" checked={this.state.busses === "1"} onChange={(event)=>this.handleChange(event, "busses")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.busses  === "2"} onChange={(event)=>this.handleChange(event, "busses")}/>
+                  <input type="radio" value="2" name="busses" checked={this.state.busses  === "2"} onChange={(event)=>this.handleChange(event, "busses")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.busses === "3"} onChange={(event)=>this.handleChange(event, "busses")}/>
+                  <input type="radio" value="3" name="busses" checked={this.state.busses === "3"} onChange={(event)=>this.handleChange(event, "busses")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.busses === "4"} onChange={(event)=>this.handleChange(event, "busses")}/>
+                  <input type="radio" value="4" name="busses" checked={this.state.busses === "4"} onChange={(event)=>this.handleChange(event, "busses")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -552,23 +551,23 @@ class Questionnaire extends Component{
             <p> Ships </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.ships === "0"} onChange={(event)=>this.handleChange(event, "ships")} />
+                  <input type="radio" value="0" name="ships" required checked={this.state.ships === "0"} onChange={(event)=>this.handleChange(event, "ships")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.ships === "1"} onChange={(event)=>this.handleChange(event, "ships")}/>
+                  <input type="radio" value="1" name="ships" checked={this.state.ships === "1"} onChange={(event)=>this.handleChange(event, "ships")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.ships  === "2"} onChange={(event)=>this.handleChange(event, "ships")}/>
+                  <input type="radio" value="2" name="ships" checked={this.state.ships  === "2"} onChange={(event)=>this.handleChange(event, "ships")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.ships === "3"} onChange={(event)=>this.handleChange(event, "ships")}/>
+                  <input type="radio" value="3" name="ships" checked={this.state.ships === "3"} onChange={(event)=>this.handleChange(event, "ships")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.ships === "4"} onChange={(event)=>this.handleChange(event, "ships")}/>
+                  <input type="radio" value="4" name="ships" checked={this.state.ships === "4"} onChange={(event)=>this.handleChange(event, "ships")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -576,23 +575,23 @@ class Questionnaire extends Component{
             <p> Small boats </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.smallboats === "0"} onChange={(event)=>this.handleChange(event, "smallboats")} />
+                  <input type="radio" value="0" name="smallboats" required checked={this.state.smallboats === "0"} onChange={(event)=>this.handleChange(event, "smallboats")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.smallboats === "1"} onChange={(event)=>this.handleChange(event, "smallboats")}/>
+                  <input type="radio" value="1" name="smallboats" checked={this.state.smallboats === "1"} onChange={(event)=>this.handleChange(event, "smallboats")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.smallboats  === "2"} onChange={(event)=>this.handleChange(event, "smallboats")}/>
+                  <input type="radio" value="2" name="smallboats" checked={this.state.smallboats  === "2"} onChange={(event)=>this.handleChange(event, "smallboats")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.smallboats === "3"} onChange={(event)=>this.handleChange(event, "smallboats")}/>
+                  <input type="radio" value="3" name="smallboats" checked={this.state.smallboats === "3"} onChange={(event)=>this.handleChange(event, "smallboats")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.smallboats === "4"} onChange={(event)=>this.handleChange(event, "smallboats")}/>
+                  <input type="radio" value="4" name="smallboats" checked={this.state.smallboats === "4"} onChange={(event)=>this.handleChange(event, "smallboats")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -600,23 +599,23 @@ class Questionnaire extends Component{
             <p> Airplanes </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.airplanes === "0"} onChange={(event)=>this.handleChange(event, "airplanes")} />
+                  <input type="radio" value="0" name="airplanes" required checked={this.state.airplanes === "0"} onChange={(event)=>this.handleChange(event, "airplanes")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.airplanes === "1"} onChange={(event)=>this.handleChange(event, "airplanes")}/>
+                  <input type="radio" value="1" name="airplanes" checked={this.state.airplanes === "1"} onChange={(event)=>this.handleChange(event, "airplanes")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.airplanes  === "2"} onChange={(event)=>this.handleChange(event, "airplanes")}/>
+                  <input type="radio" value="2" name="airplanes" checked={this.state.airplanes  === "2"} onChange={(event)=>this.handleChange(event, "airplanes")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.airplanes === "3"} onChange={(event)=>this.handleChange(event, "airplanes")}/>
+                  <input type="radio" value="3" name="airplanes" checked={this.state.airplanes === "3"} onChange={(event)=>this.handleChange(event, "airplanes")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.airplanes === "4"} onChange={(event)=>this.handleChange(event, "airplanes")}/>
+                  <input type="radio" value="4" name="airplanes" checked={this.state.airplanes === "4"} onChange={(event)=>this.handleChange(event, "airplanes")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -624,23 +623,23 @@ class Questionnaire extends Component{
             <p> Roundabouts </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.roundabout === "0"} onChange={(event)=>this.handleChange(event, "roundabout")} />
+                  <input type="radio" value="0" name="roundabouts" required checked={this.state.roundabout === "0"} onChange={(event)=>this.handleChange(event, "roundabout")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.roundabout === "1"} onChange={(event)=>this.handleChange(event, "roundabout")}/>
+                  <input type="radio" value="1" name="roundabouts" checked={this.state.roundabout === "1"} onChange={(event)=>this.handleChange(event, "roundabout")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.roundabout  === "2"} onChange={(event)=>this.handleChange(event, "roundabout")}/>
+                  <input type="radio" value="2" name="roundabouts" checked={this.state.roundabout  === "2"} onChange={(event)=>this.handleChange(event, "roundabout")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.roundabout === "3"} onChange={(event)=>this.handleChange(event, "roundabout")}/>
+                  <input type="radio" value="3" name="roundabouts" checked={this.state.roundabout === "3"} onChange={(event)=>this.handleChange(event, "roundabout")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.roundabout === "4"} onChange={(event)=>this.handleChange(event, "roundabout")}/>
+                  <input type="radio" value="4" name="roundabouts" checked={this.state.roundabout === "4"} onChange={(event)=>this.handleChange(event, "roundabout")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -648,23 +647,23 @@ class Questionnaire extends Component{
             <p> Swings </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.swings === "0"} onChange={(event)=>this.handleChange(event, "swings")} />
+                  <input type="radio" value="0" name="swings" required checked={this.state.swings === "0"} onChange={(event)=>this.handleChange(event, "swings")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.swings === "1"} onChange={(event)=>this.handleChange(event, "swings")}/>
+                  <input type="radio" value="1" name="swings" checked={this.state.swings === "1"} onChange={(event)=>this.handleChange(event, "swings")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.swings  === "2"} onChange={(event)=>this.handleChange(event, "swings")}/>
+                  <input type="radio" value="2" name="swings" checked={this.state.swings  === "2"} onChange={(event)=>this.handleChange(event, "swings")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.swings === "3"} onChange={(event)=>this.handleChange(event, "swings")}/>
+                  <input type="radio" value="3" name="swings" checked={this.state.swings === "3"} onChange={(event)=>this.handleChange(event, "swings")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.swings === "4"} onChange={(event)=>this.handleChange(event, "swings")}/>
+                  <input type="radio" value="4" name="swings" checked={this.state.swings === "4"} onChange={(event)=>this.handleChange(event, "swings")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -672,23 +671,23 @@ class Questionnaire extends Component{
             <p> Funfair </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.funfair === "0"} onChange={(event)=>this.handleChange(event, "funfair")} />
+                  <input type="radio" value="0" name="funfair" required checked={this.state.funfair === "0"} onChange={(event)=>this.handleChange(event, "funfair")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.funfair === "1"} onChange={(event)=>this.handleChange(event, "funfair")}/>
+                  <input type="radio" value="1" name="funfair" checked={this.state.funfair === "1"} onChange={(event)=>this.handleChange(event, "funfair")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.funfair  === "2"} onChange={(event)=>this.handleChange(event, "funfair")}/>
+                  <input type="radio" value="2" name="funfair" checked={this.state.funfair  === "2"} onChange={(event)=>this.handleChange(event, "funfair")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.funfair === "3"} onChange={(event)=>this.handleChange(event, "funfair")}/>
+                  <input type="radio" value="3" name="funfair" checked={this.state.funfair === "3"} onChange={(event)=>this.handleChange(event, "funfair")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.funfair === "4"} onChange={(event)=>this.handleChange(event, "funfair")}/>
+                  <input type="radio" value="4" name="funfair" checked={this.state.funfair === "4"} onChange={(event)=>this.handleChange(event, "funfair")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -696,23 +695,23 @@ class Questionnaire extends Component{
             <p> Trains </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
-                  <input type="radio" value="0" checked={this.state.trains === "0"} onChange={(event)=>this.handleChange(event, "trains")} />
+                  <input type="radio" value="0" name="trains" required checked={this.state.trains === "0"} onChange={(event)=>this.handleChange(event, "trains")} />
                   Not applicable / Never travelled
                 </label>
                 <label>
-                  <input type="radio" value="1" checked={this.state.trains === "1"} onChange={(event)=>this.handleChange(event, "trains")}/>
+                  <input type="radio" value="1" name="trains" checked={this.state.trains === "1"} onChange={(event)=>this.handleChange(event, "trains")}/>
                   Never felt sick
                 </label>
                 <label>
-                  <input type="radio" value="2" checked={this.state.trains  === "2"} onChange={(event)=>this.handleChange(event, "trains")}/>
+                  <input type="radio" value="2" name="trains" checked={this.state.trains  === "2"} onChange={(event)=>this.handleChange(event, "trains")}/>
                   Rarely felt sick
                 </label>
                 <label>
-                  <input type="radio" value="3" checked={this.state.trains === "3"} onChange={(event)=>this.handleChange(event, "trains")}/>
+                  <input type="radio" value="3" name="trains" checked={this.state.trains === "3"} onChange={(event)=>this.handleChange(event, "trains")}/>
                   Sometimes felt sick
                 </label>
                 <label>
-                  <input type="radio" value="4" checked={this.state.trains === "4"} onChange={(event)=>this.handleChange(event, "trains")}/>
+                  <input type="radio" value="4" name="trains" checked={this.state.trains === "4"} onChange={(event)=>this.handleChange(event, "trains")}/>
                   Frequently felt sick
                 </label>
               </div>
@@ -720,26 +719,26 @@ class Questionnaire extends Component{
 
           <br />
           <br />
-          <h2>MS GOLDEN</h2> 
+          {/* <h2>MS GOLDEN</h2>  */}
           <br/>
           <div>
-            <label>Before the virtual reality experience please indicate how you are feeling right now. </label>
+            <label><h3>Before the virtual reality experience please indicate how you are feeling right now. </h3></label>
             <p> General discomfort </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.gendis_b === "0"} onChange={(event)=>this.handleChange(event, "gendis_b")} />
+                    <input type="radio" value="0" name="gendis1" required checked={this.state.gendis_b === "0"} onChange={(event)=>this.handleChange(event, "gendis_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.gendis_b === "1"} onChange={(event)=>this.handleChange(event, "gendis_b")}/>
+                    <input type="radio" value="1" name="gendis1" checked={this.state.gendis_b === "1"} onChange={(event)=>this.handleChange(event, "gendis_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.gendis_b  === "2"} onChange={(event)=>this.handleChange(event, "gendis_b")}/>
+                    <input type="radio" value="2" name="gendis1" checked={this.state.gendis_b  === "2"} onChange={(event)=>this.handleChange(event, "gendis_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.gendis_b === "3"} onChange={(event)=>this.handleChange(event, "gendis_b")}/>
+                    <input type="radio" value="3" name="gendis1" checked={this.state.gendis_b === "3"} onChange={(event)=>this.handleChange(event, "gendis_b")}/>
                     Severe
                   </label>
                 </div>
@@ -748,19 +747,19 @@ class Questionnaire extends Component{
                 <p> Fatigue </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.fatigue_b === "0"} onChange={(event)=>this.handleChange(event, "fatigue_b")} />
+                    <input type="radio" value="0" name="fati1" required checked={this.state.fatigue_b === "0"} onChange={(event)=>this.handleChange(event, "fatigue_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.fatigue_b === "1"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
+                    <input type="radio" value="1" name="fati1" checked={this.state.fatigue_b === "1"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.fatigue_b  === "2"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
+                    <input type="radio" value="2" name="fati1" checked={this.state.fatigue_b  === "2"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.fatigue_b === "3"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
+                    <input type="radio" value="3" name="fati1" checked={this.state.fatigue_b === "3"} onChange={(event)=>this.handleChange(event, "fatigue_b")}/>
                     Severe
                   </label>
                 </div>
@@ -769,19 +768,19 @@ class Questionnaire extends Component{
                 <p> Headache </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.headache_b === "0"} onChange={(event)=>this.handleChange(event, "headache_b")} />
+                    <input type="radio" value="0" name="headache1" required checked={this.state.headache_b === "0"} onChange={(event)=>this.handleChange(event, "headache_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.headache_b === "1"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
+                    <input type="radio" value="1" name="headache1" checked={this.state.headache_b === "1"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.headache_b  === "2"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
+                    <input type="radio" value="2" name="headache1" checked={this.state.headache_b  === "2"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.headache_b === "3"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
+                    <input type="radio" value="3" name="headache1" checked={this.state.headache_b === "3"} onChange={(event)=>this.handleChange(event, "headache_b")}/>
                     Severe
                   </label>
                 </div>
@@ -790,19 +789,19 @@ class Questionnaire extends Component{
                 <p> Eye strain </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.eyestrain_b === "0"} onChange={(event)=>this.handleChange(event, "eyestrain_b")} />
+                    <input type="radio" value="0" name="eyestrain1" required checked={this.state.eyestrain_b === "0"} onChange={(event)=>this.handleChange(event, "eyestrain_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.eyestrain_b === "1"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
+                    <input type="radio" value="1" name="eyestrain1" checked={this.state.eyestrain_b === "1"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.eyestrain_b  === "2"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
+                    <input type="radio" value="2" name="eyestrain1" checked={this.state.eyestrain_b  === "2"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.eyestrain_b === "3"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
+                    <input type="radio" value="3" name="eyestrain1" checked={this.state.eyestrain_b === "3"} onChange={(event)=>this.handleChange(event, "eyestrain_b")}/>
                     Severe
                   </label>
                 </div>
@@ -811,19 +810,19 @@ class Questionnaire extends Component{
                 <p> Difficulty focusing or concentrating </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.diffoffocus_b === "0"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")} />
+                    <input type="radio" value="0" name="difffoc1" required checked={this.state.diffoffocus_b === "0"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.diffoffocus_b === "1"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
+                    <input type="radio" value="1" name="difffoc1" checked={this.state.diffoffocus_b === "1"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.diffoffocus_b  === "2"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
+                    <input type="radio" value="2" name="difffoc1" checked={this.state.diffoffocus_b  === "2"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.diffoffocus_b === "3"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
+                    <input type="radio" value="3" name="difffoc1" checked={this.state.diffoffocus_b === "3"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")}/>
                     Severe
                   </label>
                 </div>
@@ -832,19 +831,19 @@ class Questionnaire extends Component{
                 <p> Increased saliva </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.increasedsaliva_b === "0"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")} />
+                    <input type="radio" value="0" name="saliva1" required checked={this.state.increasedsaliva_b === "0"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.increasedsaliva_b === "1"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
+                    <input type="radio" value="1" name="saliva1" checked={this.state.increasedsaliva_b === "1"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.increasedsaliva_b  === "2"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
+                    <input type="radio" value="2" name="saliva1" checked={this.state.increasedsaliva_b  === "2"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.increasedsaliva_b === "3"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
+                    <input type="radio" value="3" name="saliva1" checked={this.state.increasedsaliva_b === "3"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")}/>
                     Severe
                   </label>
                 </div>
@@ -853,19 +852,19 @@ class Questionnaire extends Component{
                 <p> Sweating </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.sweating_b === "0"} onChange={(event)=>this.handleChange(event, "sweating_b")} />
+                    <input type="radio" value="0" name="sweating1" required checked={this.state.sweating_b === "0"} onChange={(event)=>this.handleChange(event, "sweating_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.sweating_b === "1"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
+                    <input type="radio" value="1" name="sweating1" checked={this.state.sweating_b === "1"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.sweating_b  === "2"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
+                    <input type="radio" value="2" name="sweating1" checked={this.state.sweating_b  === "2"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.sweating_b === "3"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
+                    <input type="radio" value="3" name="sweating1" checked={this.state.sweating_b === "3"} onChange={(event)=>this.handleChange(event, "sweating_b")}/>
                     Severe
                   </label>
                 </div>
@@ -874,19 +873,19 @@ class Questionnaire extends Component{
                 <p> Nausea </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.nausea_b === "0"} onChange={(event)=>this.handleChange(event, "nausea_b")} />
+                    <input type="radio" value="0" name="nausea1" required checked={this.state.nausea_b === "0"} onChange={(event)=>this.handleChange(event, "nausea_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.nausea_b === "1"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
+                    <input type="radio" value="1" name="nausea1" checked={this.state.nausea_b === "1"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.nausea_b  === "2"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
+                    <input type="radio" value="2" name="nausea1" checked={this.state.nausea_b  === "2"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.nausea_b === "3"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
+                    <input type="radio" value="3" name="nausea1" checked={this.state.nausea_b === "3"} onChange={(event)=>this.handleChange(event, "nausea_b")}/>
                     Severe
                   </label>
                 </div>
@@ -895,19 +894,19 @@ class Questionnaire extends Component{
                 <p> Blurred vision </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.blurredvis_b === "0"} onChange={(event)=>this.handleChange(event, "blurredvis_b")} />
+                    <input type="radio" value="0" name="blurr1" required checked={this.state.blurredvis_b === "0"} onChange={(event)=>this.handleChange(event, "blurredvis_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.blurredvis_b === "1"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
+                    <input type="radio" value="1" name="blurr1" checked={this.state.blurredvis_b === "1"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.blurredvis_b  === "2"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
+                    <input type="radio" value="2" name="blurr1" checked={this.state.blurredvis_b  === "2"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.blurredvis_b === "3"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
+                    <input type="radio" value="3" name="blurr1" checked={this.state.blurredvis_b === "3"} onChange={(event)=>this.handleChange(event, "blurredvis_b")}/>
                     Severe
                   </label>
                 </div>
@@ -916,19 +915,19 @@ class Questionnaire extends Component{
                 <p> Dizziness or vertigo </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.dizziness_b === "0"} onChange={(event)=>this.handleChange(event, "dizziness_b")} />
+                    <input type="radio" value="0" name="dizzvert1" required checked={this.state.dizziness_b === "0"} onChange={(event)=>this.handleChange(event, "dizziness_b")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.dizziness_b === "1"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
+                    <input type="radio" value="1" name="dizzvert1" checked={this.state.dizziness_b === "1"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.dizziness_b  === "2"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
+                    <input type="radio" value="2" name="dizzvert1" checked={this.state.dizziness_b  === "2"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.dizziness_b === "3"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
+                    <input type="radio" value="3" name="dizzvert1" checked={this.state.dizziness_b === "3"} onChange={(event)=>this.handleChange(event, "dizziness_b")}/>
                     Severe
                   </label>
                 </div>
@@ -937,25 +936,26 @@ class Questionnaire extends Component{
           </div>
           <br />
           <br />
+          <br />
 
           <div>
-            <label> Now after the virtual reality experience please indicate how you are feeling. </label>
+            <label><h3> Now after the virtual reality experience please indicate how you are feeling. </h3></label>
             <p> General discomfort </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.gendis_a === "0"} onChange={(event)=>this.handleChange(event, "gendis_a")} />
+                    <input type="radio" value="0" name="gendis2" required checked={this.state.gendis_a === "0"} onChange={(event)=>this.handleChange(event, "gendis_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.gendis_a === "1"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
+                    <input type="radio" value="1" name="gendis2" checked={this.state.gendis_a === "1"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.gendis_a  === "2"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
+                    <input type="radio" value="2" name="gendis2" checked={this.state.gendis_a  === "2"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.gendis_a === "3"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
+                    <input type="radio" value="3" name="gendis2" checked={this.state.gendis_a === "3"} onChange={(event)=>this.handleChange(event, "gendis_a")}/>
                     Severe
                   </label>
                 </div>
@@ -964,19 +964,19 @@ class Questionnaire extends Component{
                 <p> Fatigue </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.fatigue_a === "0"} onChange={(event)=>this.handleChange(event, "fatigue_a")} />
+                    <input type="radio" value="0" name="fatigue2" required checked={this.state.fatigue_a === "0"} onChange={(event)=>this.handleChange(event, "fatigue_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.fatigue_a === "1"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
+                    <input type="radio" value="1" name="fatigue2" checked={this.state.fatigue_a === "1"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.fatigue_a  === "2"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
+                    <input type="radio" value="2" name="fatigue2" checked={this.state.fatigue_a  === "2"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.fatigue_a === "3"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
+                    <input type="radio" value="3" name="fatigue2" checked={this.state.fatigue_a === "3"} onChange={(event)=>this.handleChange(event, "fatigue_a")}/>
                     Severe
                   </label>
                 </div>
@@ -985,19 +985,19 @@ class Questionnaire extends Component{
                 <p> Headache </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.headache_a === "0"} onChange={(event)=>this.handleChange(event, "headache_a")} />
+                    <input type="radio" value="0" name="headache2" required checked={this.state.headache_a === "0"} onChange={(event)=>this.handleChange(event, "headache_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.headache_a === "1"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
+                    <input type="radio" value="1" name="headache2" checked={this.state.headache_a === "1"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.headache_a  === "2"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
+                    <input type="radio" value="2" name="headache2" checked={this.state.headache_a  === "2"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.headache_a === "3"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
+                    <input type="radio" value="3" name="headache2" checked={this.state.headache_a === "3"} onChange={(event)=>this.handleChange(event, "headache_a")}/>
                     Severe
                   </label>
                 </div>
@@ -1006,19 +1006,19 @@ class Questionnaire extends Component{
                 <p> Eye strain </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.eyestrain_a === "0"} onChange={(event)=>this.handleChange(event, "eyestrain_a")} />
+                    <input type="radio" value="0" name="eyestrain2" required checked={this.state.eyestrain_a === "0"} onChange={(event)=>this.handleChange(event, "eyestrain_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.eyestrain_a === "1"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
+                    <input type="radio" value="1" name="eyestrain2" checked={this.state.eyestrain_a === "1"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.eyestrain_a  === "2"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
+                    <input type="radio" value="2" name="eyestrain2" checked={this.state.eyestrain_a  === "2"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.eyestrain_a === "3"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
+                    <input type="radio" value="3" name="eyestrain2" checked={this.state.eyestrain_a === "3"} onChange={(event)=>this.handleChange(event, "eyestrain_a")}/>
                     Severe
                   </label>
                 </div>
@@ -1027,19 +1027,19 @@ class Questionnaire extends Component{
                 <p> Difficulty focusing or concentrating </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.diffoffocus_a === "0"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")} />
+                    <input type="radio" value="0" name="difffoc2" required checked={this.state.diffoffocus_a === "0"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.diffoffocus_a === "1"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
+                    <input type="radio" value="1" name="difffoc2" checked={this.state.diffoffocus_a === "1"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.diffoffocus_a  === "2"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
+                    <input type="radio" value="2" name="difffoc2" checked={this.state.diffoffocus_a  === "2"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.diffoffocus_a === "3"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
+                    <input type="radio" value="3" name="difffoc2" checked={this.state.diffoffocus_a === "3"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")}/>
                     Severe
                   </label>
                 </div>
@@ -1048,19 +1048,19 @@ class Questionnaire extends Component{
                 <p> Increased saliva </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.increasedsaliva_a === "0"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")} />
+                    <input type="radio" value="0" name="saliva2" required checked={this.state.increasedsaliva_a === "0"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.increasedsaliva_a === "1"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
+                    <input type="radio" value="1" name="saliva2" checked={this.state.increasedsaliva_a === "1"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.increasedsaliva_a  === "2"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
+                    <input type="radio" value="2" name="saliva2" checked={this.state.increasedsaliva_a  === "2"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.increasedsaliva_a === "3"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
+                    <input type="radio" value="3" name="saliva2" checked={this.state.increasedsaliva_a === "3"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")}/>
                     Severe
                   </label>
                 </div>
@@ -1069,19 +1069,19 @@ class Questionnaire extends Component{
                 <p> Sweating </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.sweating_a === "0"} onChange={(event)=>this.handleChange(event, "sweating_a")} />
+                    <input type="radio" value="0" name="sweat2" required checked={this.state.sweating_a === "0"} onChange={(event)=>this.handleChange(event, "sweating_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.sweating_a === "1"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
+                    <input type="radio" value="1" name="sweat2" checked={this.state.sweating_a === "1"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.sweating_a  === "2"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
+                    <input type="radio" value="2" name="sweat2" checked={this.state.sweating_a  === "2"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.sweating_a === "3"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
+                    <input type="radio" value="3" name="sweat2" checked={this.state.sweating_a === "3"} onChange={(event)=>this.handleChange(event, "sweating_a")}/>
                     Severe
                   </label>
                 </div>
@@ -1090,19 +1090,19 @@ class Questionnaire extends Component{
                 <p> Nausea </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.nausea_a === "0"} onChange={(event)=>this.handleChange(event, "nausea_a")} />
+                    <input type="radio" value="0" name="nausea2" required checked={this.state.nausea_a === "0"} onChange={(event)=>this.handleChange(event, "nausea_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.nausea_a === "1"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
+                    <input type="radio" value="1" name="nausea2" checked={this.state.nausea_a === "1"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.nausea_a  === "2"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
+                    <input type="radio" value="2" name="nausea2" checked={this.state.nausea_a  === "2"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.nausea_a === "3"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
+                    <input type="radio" value="3" name="nausea2" checked={this.state.nausea_a === "3"} onChange={(event)=>this.handleChange(event, "nausea_a")}/>
                     Severe
                   </label>
                 </div>
@@ -1111,19 +1111,19 @@ class Questionnaire extends Component{
                 <p> Blurred vision </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.blurredvis_a === "0"} onChange={(event)=>this.handleChange(event, "blurredvis_a")} />
+                    <input type="radio" value="0" name="blurr2" required checked={this.state.blurredvis_a === "0"} onChange={(event)=>this.handleChange(event, "blurredvis_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.blurredvis_a === "1"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
+                    <input type="radio" value="1" name="blurr2" checked={this.state.blurredvis_a === "1"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.blurredvis_a  === "2"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
+                    <input type="radio" value="2" name="blurr2" checked={this.state.blurredvis_a  === "2"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.blurredvis_a === "3"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
+                    <input type="radio" value="3" name="blurr2" checked={this.state.blurredvis_a === "3"} onChange={(event)=>this.handleChange(event, "blurredvis_a")}/>
                     Severe
                   </label>
                 </div>
@@ -1132,19 +1132,19 @@ class Questionnaire extends Component{
                 <p> Dizziness or vertigo </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
-                    <input type="radio" value="0" checked={this.state.dizziness_a === "0"} onChange={(event)=>this.handleChange(event, "dizziness_a")} />
+                    <input type="radio" value="0" name="dizzvert2" required checked={this.state.dizziness_a === "0"} onChange={(event)=>this.handleChange(event, "dizziness_a")} />
                     None
                   </label>
                   <label>
-                    <input type="radio" value="1" checked={this.state.dizziness_a === "1"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
+                    <input type="radio" value="1" name="dizzvert2" checked={this.state.dizziness_a === "1"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
                     Slight
                   </label>
                   <label>
-                    <input type="radio" value="2" checked={this.state.dizziness_a  === "2"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
+                    <input type="radio" value="2" name="dizzvert2" checked={this.state.dizziness_a  === "2"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
                     Moderate
                   </label>
                   <label>
-                    <input type="radio" value="3" checked={this.state.dizziness_a === "3"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
+                    <input type="radio" value="3" name="dizzvert2" checked={this.state.dizziness_a === "3"} onChange={(event)=>this.handleChange(event, "dizziness_a")}/>
                     Severe
                   </label>
                 </div>
