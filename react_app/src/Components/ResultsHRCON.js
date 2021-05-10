@@ -52,7 +52,7 @@ function ListItemLink(props) {
     return <ListItem button component="a" {...props} />;
   }
 
-const ResultsEMG = (props) => {
+const ResultsHRCON = (props) => {
     const [loaded, setLoaded] = useState(false)
     const classes = useStyles();
 
@@ -93,7 +93,7 @@ const ResultsEMG = (props) => {
 
 
 
-                fetch(API_SERVER + "/api/emg/", {
+                fetch(API_SERVER + "/api/hr/", {
                     method: "GET",
                     headers: {
                       Authorization: `JWT ${localStorage.getItem("token")}`,
@@ -111,23 +111,23 @@ const ResultsEMG = (props) => {
                                 {
                                     if (res.interval == 0)
                                     {
-                                        resPreNoCon = resPreNoCon + Number(res['area'])
+                                        resPreNoCon = resPreNoCon + Number(res['bpm'])
                                     }
                                     else if (res.interval == 1)
                                     {
-                                        res25NoCon = res25NoCon + Number(res['area'])
+                                        res25NoCon = res25NoCon + Number(res['bpm'])
                                     }
                                     else if (res.interval == 2)
                                     {
-                                        res50NoCon = res50NoCon + Number(res['area'])
+                                        res50NoCon = res50NoCon + Number(res['bpm'])
                                     }
                                     else if (res.interval == 3)
                                     {
-                                        res75NoCon = res75NoCon + Number(res['area'])
+                                        res75NoCon = res75NoCon + Number(res['bpm'])
                                     }
                                     else if (res.interval == 4)
                                     {
-                                        resPostNoCon = resPostNoCon + Number(res['area'])
+                                        resPostNoCon = resPostNoCon + Number(res['bpm'])
                                     }
                                     
                                 }
@@ -138,23 +138,23 @@ const ResultsEMG = (props) => {
                                 {
                                     if (res.interval == 0)
                                     {
-                                        resPreCon = resPreCon + Number(res['area'])
+                                        resPreCon = resPreCon + Number(res['bpm'])
                                     }
                                     else if (res.interval == 1)
                                     {
-                                        res25Con = res25Con + Number(res['area'])
+                                        res25Con = res25Con + Number(res['bpm'])
                                     }
                                     else if (res.interval == 2)
                                     {
-                                        res50Con = res50Con + Number(res['area'])
+                                        res50Con = res50Con + Number(res['bpm'])
                                     }
                                     else if (res.interval == 3)
                                     {
-                                        res75Con = res75Con + Number(res['area'])
+                                        res75Con = res75Con + Number(res['bpm'])
                                     }
                                     else if (res.interval == 4)
                                     {
-                                        resPostCon = resPostCon + Number(res['area'])
+                                        resPostCon = resPostCon + Number(res['bpm'])
                                     }
                                 }
                                 
@@ -172,7 +172,7 @@ const ResultsEMG = (props) => {
                         dataPost[1] = {group: "Concussion", res: (resPostCon / subID2.length)}  //Concussion
                         graphPre = (
                             <div style = {{width: "400px"}} >
-                                <p>EMG - pre</p>
+                                <p>Heartrate - pre</p>
                         <BarChart width={300} height={300} data={dataPre} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -186,7 +186,7 @@ const ResultsEMG = (props) => {
                         console.log(graphPre)
                         graph25 = (
                             <div style = {{width: "400px"}} >
-                                <p>EMG - 25</p>
+                                <p>Heartrate - 25</p>
                         <BarChart width={300} height={300} data={data25} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -201,7 +201,7 @@ const ResultsEMG = (props) => {
 
                         graph50 = (
                             <div style = {{width: "400px"}} >
-                                <p>EMG - 50</p>
+                                <p>Heartrate - 50</p>
                         <BarChart width={300} height={300} data={data50} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -216,7 +216,7 @@ const ResultsEMG = (props) => {
 
                         graph75 = (
                             <div style = {{width: "400px"}} >
-                                <p>EMG - 75</p>
+                                <p>Heartrate - 75</p>
                         <BarChart width={300} height={300} data={data75} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -231,7 +231,7 @@ const ResultsEMG = (props) => {
 
                         graphPost = (
                             <div style = {{width: "400px"}} >
-                                <p>EMG - post</p>
+                                <p>Heartrate - post</p>
                         <BarChart width={300} height={300} data={dataPost} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -303,6 +303,6 @@ const ResultsEMG = (props) => {
 
             
 
-export default ResultsEMG
+export default ResultsHRCON
 
 
