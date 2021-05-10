@@ -11,6 +11,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { CartesianGrid, BarChart, Bar, XAxis, YAxis} from "recharts";
+import Divider from '@material-ui/core/Divider';
 
 var subID1 = []
 var subID2 = []
@@ -115,7 +116,7 @@ const ResultsQuest = (props) => {
                         graph0 = (
                         
                             <div style = {{width: "400px"}} >
-                                <p>{msGoldenValue} - BEFORE virtual reality experience: </p>
+                                <p>{msGoldenValue} BEFORE virtual reality experience: </p>
                         <BarChart width={300} height={300} data={data0} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -172,8 +173,8 @@ const ResultsQuest = (props) => {
                         
                         graph1 = (
                         
-                            <div style = {{width: "400px"}} >
-                                <p>{msGoldenValue} - AFTER virtual reality experience: </p>
+                            <div style = {{width: "900px"}} >
+                                <p>{msGoldenValue} AFTER virtual reality experience: </p>
                         <BarChart width={300} height={300} data={data1} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -224,9 +225,9 @@ const ResultsQuest = (props) => {
                             data2[0] = {group: "No concussion", res: (res5 / subID1.length)}  //Not concussion
                             data2[1] = {group: "Concussion", res: (res6 / subID2.length)}  //Concussion
                             graph2 = (
-                            <div style = {{width: "400px"}} >
+                            <div style = {{width: "900px"}} >
 
-                                <p>{nauseaValue}</p>       
+                                <p> Nauseated in -{nauseaValue}- in general: </p>       
                             <BarChart width={300} height={300} data={data2} margin={{left: 50}} barSize={40} >
                                 <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                                 <YAxis />
@@ -295,7 +296,7 @@ const ResultsQuest = (props) => {
                 
 
                 <div className = {styles.inputFields}>
-                <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 45}} >Motion Sickness symptoms: </InputLabel>
+                <InputLabel style={{ marginLeft: 50, marginRight: 50, marginTop: 45}} > Motion Sickness symptoms: </InputLabel>
                 <Select value={msGoldenValue} onChange={handleMSGolden}>
                     <MenuItem value={'fatigue'}>Fatigue</MenuItem>
                     <MenuItem value={'headache'}>Headache</MenuItem>
@@ -308,7 +309,8 @@ const ResultsQuest = (props) => {
                     <MenuItem value={'dizziness'}>Dizziness</MenuItem>
                     <MenuItem value={'gendiscomfort'}>General Discomfort</MenuItem>
                 </Select>
-                <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 45}} >Nausea by transport/entertainment: </InputLabel>
+                {/* <Divider orientation="vertical" flexItem /> */}
+                <InputLabel style={{ marginLeft: 300, marginRight: 50, marginTop: 45}} > Nausea by transport/entertainment: </InputLabel>
                 <Select value={nauseaValue} onChange={handleNausea}>
                     <MenuItem value={'trains'}>Trains</MenuItem>
                     <MenuItem value={'airplanes'}>Airplanes</MenuItem>
@@ -328,6 +330,7 @@ const ResultsQuest = (props) => {
                     {loaded2 && graph2} */}
                     {graph0}
                     {graph1}
+                    {/* <Divider orientation="vertical" flexItem /> */}
                     {graph2}
                     
                 </div> 

@@ -126,8 +126,8 @@ const handleFiles = files => {
     return (
         <div>
             <ReactFileReader handleFiles={handleFiles} fileTypes={'.csv'} >
-              <h1>Click here to upload the file</h1>
-                <button style={{marginLeft : '5%'}} className='btn'>Upload</button>
+              <h1>Upload a new master file: </h1>
+                <button style={{marginLeft : '5%'}} className='btn'>Choose file...</button>
             </ReactFileReader>
             <div className={classes.root}>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

@@ -172,10 +172,10 @@ const ResultsHRCON = (props) => {
                         dataPost[1] = {group: "Concussion", res: (resPostCon / subID2.length)}  //Concussion
                         graphPre = (
                             <div style = {{width: "400px"}} >
-                                <p>Average heartrate BEFORE the virtual reality experience: </p>
+                                <p>Average heart rate BEFORE the virtual reality experience: </p>
                         <BarChart width={300} height={300} data={dataPre} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
-                            <YAxis />
+                            <YAxis label={{ value: "BPM", position: "outsideMiddle", angle: 0, dx: -20}}/>
                             <CartesianGrid strokeDasharray="3 3" />
                             <Bar dataKey="res" fill="#8884d8" />
                         </BarChart>
@@ -231,10 +231,10 @@ const ResultsHRCON = (props) => {
 
                         graphPost = (
                             <div style = {{width: "400px"}} >
-                                <p>Average heartrate AFTER the virtual reality experience:</p>
+                                <p>Average heart rate AFTER the virtual reality experience:</p>
                         <BarChart width={300} height={300} data={dataPost} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
-                            <YAxis />
+                            <YAxis label={{ value: "BPM", position: "outsideMiddle", angle: 0, dx: -20}}/>
                             <CartesianGrid strokeDasharray="3 3" />
                             <Bar dataKey="res" fill="#8884d8" />
                         </BarChart>

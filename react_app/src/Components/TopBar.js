@@ -25,10 +25,10 @@ export default function TopBar(props) {
           <IconButton aria-label="home page" color="inherit" href="/">
             <HomeIcon />
           </IconButton>
-          {props.isAuthenticated ? <Button color="inherit" href="/update_password">Update Password</Button> : null}
-          {props.isAuthenticated ? <Button color="inherit" href="/import_data">Import data</Button> : null}
+
+
           {props.isAuthenticated ? <Button color="inherit" href="/questionnaire">Questionnaire</Button> : null}
-          
+          {props.isAuthenticated ? <Button color="inherit" href="/import_data">Upload data</Button> : null}          
           
           
           {props.isAuthenticated ? null : <Button color="inherit" href="/" >About</Button>}
@@ -36,6 +36,7 @@ export default function TopBar(props) {
           {props.isAuthenticated ? null : <Button color="inherit" href="/" >Fun facts</Button>}
           {props.isAuthenticated ? null : <Button color="inherit" href="/" >Participate here!</Button>}
           {/* {props.isAuthenticated ? null : <Button color="inherit" href="/login" >Login</Button>} */}
+          {props.isAuthenticated ? <Button color="inherit" href="/update_password">Update Password</Button> : null}
           {props.isAuthenticated ? <Button color="inherit" onClick={() => props.logout()}>Logout</Button> : null}
         </Toolbar>
       </AppBar>
