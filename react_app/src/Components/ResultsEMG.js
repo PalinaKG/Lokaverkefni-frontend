@@ -172,7 +172,7 @@ const ResultsEMG = (props) => {
                         dataPost[1] = {group: "Concussion", res: (resPostCon / subID2.length)}  //Concussion
                         graphPre = (
                             <div style = {{width: "400px"}} >
-                                <p>EMG - pre</p>
+                                <p>Muscle activity BEFORE virtual reality experience:</p>
                         <BarChart width={300} height={300} data={dataPre} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -182,56 +182,56 @@ const ResultsEMG = (props) => {
                         </div>
                         )
 
-                        console.log(dataPre)
-                        console.log(graphPre)
-                        graph25 = (
-                            <div style = {{width: "400px"}} >
-                                <p>EMG - 25</p>
-                        <BarChart width={300} height={300} data={data25} margin={{left: 50}} barSize={40} >
-                            <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
-                            <YAxis />
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <Bar dataKey="res" fill="#8884d8" />
-                        </BarChart>
-                        </div>
-                        )
+                        // console.log(dataPre)
+                        // console.log(graphPre)
+                        // graph25 = (
+                        //     <div style = {{width: "400px"}} >
+                        //         <p>EMG - 25</p>
+                        // <BarChart width={300} height={300} data={data25} margin={{left: 50}} barSize={40} >
+                        //     <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
+                        //     <YAxis />
+                        //     <CartesianGrid strokeDasharray="3 3" />
+                        //     <Bar dataKey="res" fill="#8884d8" />
+                        // </BarChart>
+                        // </div>
+                        // )
 
-                        console.log(data25)
-                        console.log(graph25)
+                        // console.log(data25)
+                        // console.log(graph25)
 
-                        graph50 = (
-                            <div style = {{width: "400px"}} >
-                                <p>EMG - 50</p>
-                        <BarChart width={300} height={300} data={data50} margin={{left: 50}} barSize={40} >
-                            <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
-                            <YAxis />
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <Bar dataKey="res" fill="#8884d8" />
-                        </BarChart>
-                        </div>
-                        )
-                        console.log(data50)
-                        console.log(graph50)
+                        // graph50 = (
+                        //     <div style = {{width: "400px"}} >
+                        //         <p>EMG - 50</p>
+                        // <BarChart width={300} height={300} data={data50} margin={{left: 50}} barSize={40} >
+                        //     <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
+                        //     <YAxis />
+                        //     <CartesianGrid strokeDasharray="3 3" />
+                        //     <Bar dataKey="res" fill="#8884d8" />
+                        // </BarChart>
+                        // </div>
+                        // )
+                        // console.log(data50)
+                        // console.log(graph50)
 
 
-                        graph75 = (
-                            <div style = {{width: "400px"}} >
-                                <p>EMG - 75</p>
-                        <BarChart width={300} height={300} data={data75} margin={{left: 50}} barSize={40} >
-                            <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
-                            <YAxis />
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <Bar dataKey="res" fill="#8884d8" />
-                        </BarChart>
-                        </div>
-                        )
-                        console.log(data75)
-                        console.log(graph75)
+                        // graph75 = (
+                        //     <div style = {{width: "400px"}} >
+                        //         <p>EMG - 75</p>
+                        // <BarChart width={300} height={300} data={data75} margin={{left: 50}} barSize={40} >
+                        //     <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
+                        //     <YAxis />
+                        //     <CartesianGrid strokeDasharray="3 3" />
+                        //     <Bar dataKey="res" fill="#8884d8" />
+                        // </BarChart>
+                        // </div>
+                        // )
+                        // console.log(data75)
+                        // console.log(graph75)
 
 
                         graphPost = (
                             <div style = {{width: "400px"}} >
-                                <p>EMG - post</p>
+                                <p>Muscle activity AFTER virtual reality experience:</p>
                         <BarChart width={300} height={300} data={dataPost} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -275,10 +275,10 @@ const ResultsEMG = (props) => {
                 <div className={classes.root}>
                     <List component="nav" aria-label="main mailbox folders">
                         <ListItemLink href="/results/hr">
-                        <ListItemText primary="HR" />
+                        <ListItemText primary="Heart Rate" />
                         </ListItemLink>
                         <ListItemLink href="/results/emg">
-                        <ListItemText primary="EMG" />
+                        <ListItemText primary="Muscle Activity" />
                         </ListItemLink>
                         <ListItemLink href="/results/quest">
                         <ListItemText primary="Questionnaire" />

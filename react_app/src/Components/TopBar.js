@@ -32,11 +32,10 @@ export default function TopBar(props) {
           
           
           {props.isAuthenticated ? null : <Button color="inherit" href="/" >About</Button>}
-          {<Button color="inherit" href="/results/hr">Get Results</Button>}
+          {<Button color="inherit" href="/results/hr">Results</Button>}
           {props.isAuthenticated ? null : <Button color="inherit" href="/" >Fun facts</Button>}
-          {props.isAuthenticated ? null : <Button color="inherit" href="/" >Publications</Button>}
-          {props.isAuthenticated ? null : <Button color="inherit" href="/" >Sign up!</Button>}
-          {props.isAuthenticated ? null : <Button color="inherit" href="/login" >Login</Button>}
+          {props.isAuthenticated ? null : <Button color="inherit" href="/" >Participate here!</Button>}
+          {/* {props.isAuthenticated ? null : <Button color="inherit" href="/login" >Login</Button>} */}
           {props.isAuthenticated ? <Button color="inherit" onClick={() => props.logout()}>Logout</Button> : null}
         </Toolbar>
       </AppBar>

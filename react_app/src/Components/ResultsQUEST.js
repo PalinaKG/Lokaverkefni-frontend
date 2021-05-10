@@ -115,7 +115,7 @@ const ResultsQuest = (props) => {
                         graph0 = (
                         
                             <div style = {{width: "400px"}} >
-                                <p>{msGoldenValue} - pre</p>
+                                <p>{msGoldenValue} - BEFORE virtual reality experience: </p>
                         <BarChart width={300} height={300} data={data0} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -173,7 +173,7 @@ const ResultsQuest = (props) => {
                         graph1 = (
                         
                             <div style = {{width: "400px"}} >
-                                <p>{msGoldenValue} - post</p>
+                                <p>{msGoldenValue} - AFTER virtual reality experience: </p>
                         <BarChart width={300} height={300} data={data1} margin={{left: 50}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
                             <YAxis />
@@ -282,10 +282,10 @@ const ResultsQuest = (props) => {
                 <div className={classes.root}>
                     <List component="nav" aria-label="main mailbox folders">
                         <ListItemLink href="/results/hr">
-                        <ListItemText primary="HR" />
+                        <ListItemText primary="Heart Rate" />
                         </ListItemLink>
                         <ListItemLink href="/results/emg">
-                        <ListItemText primary="EMG" />
+                        <ListItemText primary="Muscle Activity" />
                         </ListItemLink>
                         <ListItemLink href="/results/quest">
                         <ListItemText primary="Questionnaire" />
@@ -295,27 +295,27 @@ const ResultsQuest = (props) => {
                 
 
                 <div className = {styles.inputFields}>
-                <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 45}} >Golden Standars: </InputLabel>
+                <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 45}} >Motion Sickness symptoms: </InputLabel>
                 <Select value={msGoldenValue} onChange={handleMSGolden}>
                     <MenuItem value={'fatigue'}>Fatigue</MenuItem>
                     <MenuItem value={'headache'}>Headache</MenuItem>
                     <MenuItem value={'eyestrain'}>Eyestrain</MenuItem>
-                    <MenuItem value={'incrsalvation'}>IncreasedSalvation</MenuItem>
-                    <MenuItem value={'blurredvision'}>BlurredVision</MenuItem>
-                    <MenuItem value={'diffoffocus'}>DiffOfFocus</MenuItem>
+                    <MenuItem value={'incrsalvation'}>Increased Saliva</MenuItem>
+                    <MenuItem value={'blurredvision'}>Blurred Vision</MenuItem>
+                    <MenuItem value={'diffoffocus'}>Difficulty Focusing</MenuItem>
                     <MenuItem value={'sweat'}>Sweat</MenuItem>
                     <MenuItem value={'nausea'}>Nausea</MenuItem>
                     <MenuItem value={'dizziness'}>Dizziness</MenuItem>
-                    <MenuItem value={'gendiscomfort'}>GeneralDiscomfort</MenuItem>
+                    <MenuItem value={'gendiscomfort'}>General Discomfort</MenuItem>
                 </Select>
-                <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 45}} >Nausea: </InputLabel>
+                <InputLabel style={{ marginLeft: 50, marginRight: 10, marginTop: 45}} >Nausea by transport/entertainment: </InputLabel>
                 <Select value={nauseaValue} onChange={handleNausea}>
                     <MenuItem value={'trains'}>Trains</MenuItem>
                     <MenuItem value={'airplanes'}>Airplanes</MenuItem>
-                    <MenuItem value={'smallboats'}>Smallboats</MenuItem>
+                    <MenuItem value={'smallboats'}>Small Boats</MenuItem>
                     <MenuItem value={'ships'}>Ships</MenuItem>
-                    <MenuItem value={'swings'}>Swings</MenuItem>
-                    <MenuItem value={'roundabout'}>Roundabout</MenuItem>
+                    <MenuItem value={'swings'}>Swings in playgrounds</MenuItem>
+                    <MenuItem value={'roundabout'}>Roundabouts in playgrounds</MenuItem>
                     <MenuItem value={'funfair'}>Funfair</MenuItem>
                     <MenuItem value={'busses'}>Busses</MenuItem>
                     <MenuItem value={'cars'}>Cars</MenuItem>

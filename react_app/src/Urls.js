@@ -7,7 +7,7 @@ import ImportData from "./Components/Import_data";
 import Questionnaire from "./Components/Questionnaire";
 // import ResultsHR from "./Components/ResultsHR"
 import ResultsEMG from "./Components/ResultsEMG"
-import ResultsQuest from "./Components/ResultsQuest"
+import ResultsQuest from "./Components/ResultsQUEST"
 import ResultsHRCON from "./Components/ResultsHRCON"
 
 // A wrapper for <Route> that redirects to the login screen if you're not yet authenticated.
