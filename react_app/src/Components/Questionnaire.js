@@ -462,7 +462,7 @@ class Questionnaire extends Component{
             <div className="radio">
               <label>
                 <input type="radio" value="2" name="ms" checked={this.state.motionsickness  === "2"} onChange={(event)=>this.handleChange(event, "motionsickness")}/>
-                Yes, a few times
+                Yes, sometimes
               </label>
             </div>
             <div className="radio">
