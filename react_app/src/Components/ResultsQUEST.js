@@ -272,68 +272,79 @@ const ResultsQuest = (props) => {
 
    }
 
-   
 
 
 
 
     return (
         <div>
-            <div className={styles.container}>         
-                <div className={classes.root}>
+            <div style={{width: 500, marginLeft: 20}}>
+                <h3> Compare results between people that had suffered a concussion and those who had not</h3>
+            </div>
+        <div className={styles.container}>
+            
+            <div className={styles.container1}>
                     <List component="nav" aria-label="main mailbox folders">
-                        <ListItemLink href="/results/hr">
-                        <ListItemText primary="Heart Rate" />
+                        <ListItemLink style={{ border: "2px solid lightgrey"}} href="/results/hr">
+                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }}  primary="Heart Rate" />
                         </ListItemLink>
-                        <ListItemLink href="/results/emg">
-                        <ListItemText primary="Muscle Activity" />
+                        <ListItemLink style={{ borderRight: "2px solid lightgrey", borderLeft: "2px solid lightgrey"}} href="/results/emg">
+                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }} primary="Muscle Activity" />
                         </ListItemLink>
-                        <ListItemLink href="/results/quest">
-                        <ListItemText primary="Questionnaire" />
+                        <ListItemLink style={{ border: "2px solid lightgrey"}}  href="/results/quest">
+                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }} primary="Questionnaire" />
                         </ListItemLink>
                     </List>
                 </div>
                 
+                
+                <div className={styles.container2}>
+                    <InputLabel style={{ marginLeft: 0, marginRight: 10, marginTop: 45}} > Motion Sickness symptoms: </InputLabel>
+                    <Select value={msGoldenValue} onChange={handleMSGolden}>
+                        <MenuItem value={'fatigue'}>Fatigue</MenuItem>
+                        <MenuItem value={'headache'}>Headache</MenuItem>
+                        <MenuItem value={'eyestrain'}>Eyestrain</MenuItem>
+                        <MenuItem value={'incrsalvation'}>Increased Saliva</MenuItem>
+                        <MenuItem value={'blurredvision'}>Blurred Vision</MenuItem>
+                        <MenuItem value={'diffoffocus'}>Difficulty Focusing</MenuItem>
+                        <MenuItem value={'sweat'}>Sweat</MenuItem>
+                        <MenuItem value={'nausea'}>Nausea</MenuItem>
+                        <MenuItem value={'dizziness'}>Dizziness</MenuItem>
+                        <MenuItem value={'gendiscomfort'}>General Discomfort</MenuItem>
+                    </Select>
+                    <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
+                        {graph0}
+                        {graph1}   
+                    </div> 
 
-                <div className = {styles.inputFields}>
-                <InputLabel style={{ marginLeft: 50, marginRight: 50, marginTop: 45}} > Motion Sickness symptoms: </InputLabel>
-                <Select value={msGoldenValue} onChange={handleMSGolden}>
-                    <MenuItem value={'fatigue'}>Fatigue</MenuItem>
-                    <MenuItem value={'headache'}>Headache</MenuItem>
-                    <MenuItem value={'eyestrain'}>Eyestrain</MenuItem>
-                    <MenuItem value={'incrsalvation'}>Increased Saliva</MenuItem>
-                    <MenuItem value={'blurredvision'}>Blurred Vision</MenuItem>
-                    <MenuItem value={'diffoffocus'}>Difficulty Focusing</MenuItem>
-                    <MenuItem value={'sweat'}>Sweat</MenuItem>
-                    <MenuItem value={'nausea'}>Nausea</MenuItem>
-                    <MenuItem value={'dizziness'}>Dizziness</MenuItem>
-                    <MenuItem value={'gendiscomfort'}>General Discomfort</MenuItem>
-                </Select>
-                {/* <Divider orientation="vertical" flexItem /> */}
-                <InputLabel style={{ marginLeft: 300, marginRight: 50, marginTop: 45}} > Nausea by transport/entertainment: </InputLabel>
-                <Select value={nauseaValue} onChange={handleNausea}>
-                    <MenuItem value={'trains'}>Trains</MenuItem>
-                    <MenuItem value={'airplanes'}>Airplanes</MenuItem>
-                    <MenuItem value={'smallboats'}>Small Boats</MenuItem>
-                    <MenuItem value={'ships'}>Ships</MenuItem>
-                    <MenuItem value={'swings'}>Swings in playgrounds</MenuItem>
-                    <MenuItem value={'roundabout'}>Roundabouts in playgrounds</MenuItem>
-                    <MenuItem value={'funfair'}>Funfair</MenuItem>
-                    <MenuItem value={'busses'}>Busses</MenuItem>
-                    <MenuItem value={'cars'}>Cars</MenuItem>
-                </Select>
-                </div>             
-            </div>
-                <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
-                    {/* {loaded0 && graph0}
-                    {loaded1 && graph1}
-                    {loaded2 && graph2} */}
-                    {graph0}
-                    {graph1}
-                    {/* <Divider orientation="vertical" flexItem /> */}
-                    {graph2}
+                </div>
+                
+                <Divider orientation="vertical" flexItem />
+                <div className={styles.container3}>
+                    <div>
+                        <InputLabel style={{ marginLeft: 40, marginRight: 0, marginTop: 45}} > Nausea by transport/entertainment: </InputLabel>
+                    <Select style={{ marginLeft: 40}} value={nauseaValue} onChange={handleNausea}>
+                        <MenuItem value={'trains'}>Trains</MenuItem>
+                        <MenuItem value={'airplanes'}>Airplanes</MenuItem>
+                        <MenuItem value={'smallboats'}>Small Boats</MenuItem>
+                        <MenuItem value={'ships'}>Ships</MenuItem>
+                        <MenuItem value={'swings'}>Swings in playgrounds</MenuItem>
+                        <MenuItem value={'roundabout'}>Roundabouts in playgrounds</MenuItem>
+                        <MenuItem value={'funfair'}>Funfair</MenuItem>
+                        <MenuItem value={'busses'}>Busses</MenuItem>
+                        <MenuItem value={'cars'}>Cars</MenuItem>
+                    </Select>
+
+                    </div>
                     
-                </div> 
+
+                    <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
+                        {graph2}   
+                    </div> 
+
+                </div>
+                
+        </div>
         </div>
     )
 }

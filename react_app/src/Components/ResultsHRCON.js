@@ -288,13 +288,17 @@ const ResultsHRCON = (props) => {
                 
            
             </div>
-                <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
+                {/* <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
                     {loaded && graphPre}
                     {loaded && graph25}
                     {loaded && graph50}
                 </div> 
                 <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
                     {loaded && graph75}
+                    {loaded && graphPost}
+                </div>  */}
+                <div style={{marginLeft : '25%', marginBottom : '50px', display: 'flex'}}>  
+                    {loaded && graphPre}
                     {loaded && graphPost}
                 </div> 
         </div>
