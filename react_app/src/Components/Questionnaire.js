@@ -242,14 +242,14 @@ class Questionnaire extends Component{
           <div>
                 <button onClick={() => this.setState({ showing: !showing })}><h1>QUESTIONNAIRE</h1></button>
                 <div style={{ display: (showing ? 'block' : 'none') }}>
-                  <label>
+                  <label style={{fontWeight: 'bold'}}>
                     SubjectID:
-                    <input type="text" required value={this.state.subjectID} onChange={(event)=>this.handleChange(event, "subjectID")} />
+                    <input  style={{width: 100, marginLeft: 66, marginTop: 10}} type="text" required value={this.state.subjectID} onChange={(event)=>this.handleChange(event, "subjectID")} />
                   </label>
                   <br/>
                   <br/>
-                  <label> Group: 
-                    <select required value={this.state.groups} onChange={(event)=>this.handleChange(event, "groups")}>
+                  <label style={{fontWeight: 'bold'}}> Group: 
+                    <select style={{width: 100, marginLeft: 92, marginBottom: 30}} required value={this.state.groups} onChange={(event)=>this.handleChange(event, "groups")}>
                       <option value="1">Concussion</option>
                       <option value="0">Healthy</option>
                     </select>
@@ -258,8 +258,8 @@ class Questionnaire extends Component{
           </div>
           <br />
           <br />
-          <label> Gender: 
-            <select required value={this.state.gender} onChange={(event)=>this.handleChange(event, "gender")}>
+          <label style={{fontWeight: 'bold'}}> Gender: 
+            <select style={{width: 100, marginLeft: 87}} required value={this.state.gender} onChange={(event)=>this.handleChange(event, "gender")}>
               <option value="1">Male</option>
               <option value="0">Female</option>
               <option value="2">Other</option>
@@ -267,64 +267,55 @@ class Questionnaire extends Component{
           </label>
           <br/>
           <br/>
-          <label>
+          <label style={{fontWeight: 'bold'}}>
             Birthyear:  
-            <input type="number" required value={this.state.birthyear} onChange={(event)=>this.handleChange(event, "birthyear")} min="1900" max="2020"/>
+            <input style={{width: 100, marginLeft: 78}} type="number" required value={this.state.birthyear} onChange={(event)=>this.handleChange(event, "birthyear")} min="1900" max="2020"/>
           </label>
           <br />
           <br/>
-          <label>
+          <label style={{fontWeight: 'bold'}}>
             Height:  
-            <input type="number" required value={this.state.height} onChange={(event)=>this.handleChange(event, "height")} min="100" max="300" />
+            <input style={{width: 100, marginLeft: 94, marginRight: 5}} type="number" required value={this.state.height} onChange={(event)=>this.handleChange(event, "height")} min="100" max="300" />
+              cm
           </label>
           <br />
           <br />
           {/* <h2>GENERAL INFORMATION</h2>  */}
-          <label>
+          <label style={{fontWeight: 'bold'}}>
             Weight:  
-            <input type="number" required value={this.state.weight} onChange={(event)=>this.handleChange(event, "weight")} min="30" max="200" />
+            <input style={{width: 100, marginLeft: 92, marginRight: 5}} type="number" required value={this.state.weight} onChange={(event)=>this.handleChange(event, "weight")} min="30" max="200" />
+            kg
           </label>
           <br/>
           <br/>
-          <label> Handedness: 
-            <select required value={this.state.handedness} onChange={(event)=>this.handleChange(event, "handedness")}>
+          <label style={{fontWeight: 'bold'}}> Handedness: 
+            <select style={{width: 100, marginLeft: 57}} required value={this.state.handedness} onChange={(event)=>this.handleChange(event, "handedness")}>
               <option value="1">Right-handed</option>
               <option value="0">Left-handed</option>
             </select>
           </label>
           <br />
-          <br />
+          <br/>
 
-          <label>
-            How long has it been since you last ate?
-              <div className="radio">
-              <label>
-                <input type="radio" value="0" name="food" required checked={this.state.foodTime === "0"} onChange={(event)=>this.handleChange(event, "foodTime")} />
-                Less than an hour
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="radio" value="1" name="food" checked={this.state.foodTime === "1"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
-                Between one and two hours
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="radio" value="2" name="food"checked={this.state.foodTime  === "2"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
-                Between two and three hours
-              </label>
-            </div>
-            <div className="radio">
-              <label>
-                <input type="radio" value="3" name="food" checked={this.state.foodTime === "3"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
-                More than three hours
-              </label>
-            </div>
+          <label style={{fontWeight: 'bold'}}> Have you indulged caffeine today?
+            <select required value={this.state.caffeine} onChange={(event)=>this.handleChange(event, "caffeine")}>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </label>
+
+          <br/>
+          <br />
+          <label style={{fontWeight: 'bold'}}> Do you use any source of nicotine on a daily basis?
+            <select required value={this.state.nicotine} onChange={(event)=>this.handleChange(event, "nicotine")}>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
           </label>
           <br/>
+          <br/>
           <label>
-            How healthy do you consider yourself?
+            <div  style={{fontWeight: 'bold'}}>How healthy do you consider yourself? </div>
               <div className="radio">
               <label>
                 <input type="radio" value="5" name="healthy" required checked={this.state.healthyScale === "5"} onChange={(event)=>this.handleChange(event, "healthyScale")} />
@@ -358,9 +349,38 @@ class Questionnaire extends Component{
           </label>
 
           <br/>
+        
+          <label>
+            <div style={{fontWeight: 'bold'}}>How long has it been since you last ate? </div>
+              <div className="radio">
+              <label>
+                <input type="radio" value="0" name="food" required checked={this.state.foodTime === "0"} onChange={(event)=>this.handleChange(event, "foodTime")} />
+                Less than an hour
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="radio" value="1" name="food" checked={this.state.foodTime === "1"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
+                Between one and two hours
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="radio" value="2" name="food"checked={this.state.foodTime  === "2"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
+                Between two and three hours
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="radio" value="3" name="food" checked={this.state.foodTime === "3"} onChange={(event)=>this.handleChange(event, "foodTime")}/>
+                More than three hours
+              </label>
+            </div>
+          </label>
+          <br/>
 
           <label>
-            How often a week do you practice any kind of physical activity?
+            <div style={{fontWeight: 'bold'}}>How often a week do you practice any kind of physical activity? </div>
               <div className="radio">
               <label>
                 <input type="radio" value="0" name="physical" required checked={this.state.noExercise === "0"} onChange={(event)=>this.handleChange(event, "noExercise")} />
@@ -392,31 +412,10 @@ class Questionnaire extends Component{
               </label>
             </div>
           </label>
-
-          <br/>
-
-          <label> Do you use any source of nicotine on a daily basis?
-            <select required value={this.state.nicotine} onChange={(event)=>this.handleChange(event, "nicotine")}>
-              <option value="1">Yes</option>
-              <option value="0">No</option>
-            </select>
-          </label>
-
-          <br/>
-          <br/>
-
-          <label> Have you indulged caffeine today?
-            <select required value={this.state.caffeine} onChange={(event)=>this.handleChange(event, "caffeine")}>
-              <option value="1">Yes</option>
-              <option value="0">No</option>
-            </select>
-          </label>
-
-          <br/>
           <br/>
 
           <label>
-            How recently have you indulged alcohol?
+            <div style={{fontWeight: 'bold'}}>How recently have you indulged alcohol? </div>
               <div className="radio">
               <label>
                 <input type="radio" value="0" name="alcohol" required checked={this.state.alcohol === "0"} onChange={(event)=>this.handleChange(event, "alcohol")} />
@@ -446,7 +445,7 @@ class Questionnaire extends Component{
           <br/>
 
           <label>
-            Do you experience motion sickness?
+            <div style={{fontWeight: 'bold'}}> Do you experience motion sickness? </div>
               <div className="radio">
               <label>
                 <input type="radio" value="0" name="ms" required checked={this.state.motionsickness === "0"} onChange={(event)=>this.handleChange(event, "motionsickness")} />
@@ -476,7 +475,7 @@ class Questionnaire extends Component{
           <br />
 
 
-          <label> Have you ever taken any drugs to minimise your motion sickness?
+          <label style={{fontWeight: 'bold'}}> Have you ever taken any drugs to minimise your motion sickness?
             <select required value={this.state.msdrugs} onChange={(event)=>this.handleChange(event, "msdrugs")}>
               <option value="1">Yes</option>
               <option value="0">No</option>
@@ -485,7 +484,7 @@ class Questionnaire extends Component{
 
           <br/>
           <br/>
-          <label>
+          <label style={{fontWeight: 'bold'}}>
             Any comments?
             <input type="text" value={this.state.comments} onChange={(event)=>this.handleChange(event, "comments")} />
           </label>
@@ -500,7 +499,7 @@ class Questionnaire extends Component{
             For each of the following types of transport or entertainment, please indicate how often you have felt sick or nauseated.
             </h3></label>
             <br />
-            <p> Cars </p>
+            <p style={{fontWeight: 'bold'}}> Cars </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="cars" required checked={this.state.cars === "0"} onChange={(event)=>this.handleChange(event, "cars")} />
@@ -524,7 +523,7 @@ class Questionnaire extends Component{
                 </label>
               </div>
               <br />
-            <p> Busses </p>
+            <p style={{fontWeight: 'bold'}}> Busses </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="busses" required checked={this.state.busses === "0"} onChange={(event)=>this.handleChange(event, "busses")} />
@@ -548,7 +547,7 @@ class Questionnaire extends Component{
                 </label>
               </div>
               <br />
-            <p> Ships </p>
+            <p style={{fontWeight: 'bold'}}> Ships </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="ships" required checked={this.state.ships === "0"} onChange={(event)=>this.handleChange(event, "ships")} />
@@ -572,7 +571,7 @@ class Questionnaire extends Component{
                 </label>
               </div>
               <br />
-            <p> Small boats </p>
+            <p style={{fontWeight: 'bold'}}> Small boats </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="smallboats" required checked={this.state.smallboats === "0"} onChange={(event)=>this.handleChange(event, "smallboats")} />
@@ -596,7 +595,7 @@ class Questionnaire extends Component{
                 </label>
               </div>
               <br />
-            <p> Airplanes </p>
+            <p style={{fontWeight: 'bold'}}> Airplanes </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="airplanes" required checked={this.state.airplanes === "0"} onChange={(event)=>this.handleChange(event, "airplanes")} />
@@ -620,7 +619,7 @@ class Questionnaire extends Component{
                 </label>
               </div>
               <br />
-            <p> Roundabouts </p>
+            <p style={{fontWeight: 'bold'}}> Roundabouts </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="roundabouts" required checked={this.state.roundabout === "0"} onChange={(event)=>this.handleChange(event, "roundabout")} />
@@ -644,7 +643,7 @@ class Questionnaire extends Component{
                 </label>
               </div>
               <br />
-            <p> Swings </p>
+            <p style={{fontWeight: 'bold'}}> Swings </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="swings" required checked={this.state.swings === "0"} onChange={(event)=>this.handleChange(event, "swings")} />
@@ -668,7 +667,7 @@ class Questionnaire extends Component{
                 </label>
               </div>
               <br />
-            <p> Funfair </p>
+            <p style={{fontWeight: 'bold'}}> Funfair </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="funfair" required checked={this.state.funfair === "0"} onChange={(event)=>this.handleChange(event, "funfair")} />
@@ -692,7 +691,7 @@ class Questionnaire extends Component{
                 </label>
               </div>
               <br />
-            <p> Trains </p>
+            <p style={{fontWeight: 'bold'}}> Trains </p>
               <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                 <label>
                   <input type="radio" value="0" name="trains" required checked={this.state.trains === "0"} onChange={(event)=>this.handleChange(event, "trains")} />
@@ -723,7 +722,7 @@ class Questionnaire extends Component{
           <br/>
           <div>
             <label><h3>Before the virtual reality experience please indicate how you are feeling right now. </h3></label>
-            <p> General discomfort </p>
+            <p style={{fontWeight: 'bold'}}> General discomfort </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="gendis1" required checked={this.state.gendis_b === "0"} onChange={(event)=>this.handleChange(event, "gendis_b")} />
@@ -744,7 +743,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Fatigue </p>
+                <p style={{fontWeight: 'bold'}}> Fatigue </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="fati1" required checked={this.state.fatigue_b === "0"} onChange={(event)=>this.handleChange(event, "fatigue_b")} />
@@ -765,7 +764,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Headache </p>
+                <p style={{fontWeight: 'bold'}}> Headache </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="headache1" required checked={this.state.headache_b === "0"} onChange={(event)=>this.handleChange(event, "headache_b")} />
@@ -786,7 +785,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Eye strain </p>
+                <p style={{fontWeight: 'bold'}}> Eye strain </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="eyestrain1" required checked={this.state.eyestrain_b === "0"} onChange={(event)=>this.handleChange(event, "eyestrain_b")} />
@@ -807,7 +806,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Difficulty focusing or concentrating </p>
+                <p style={{fontWeight: 'bold'}}> Difficulty focusing or concentrating </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="difffoc1" required checked={this.state.diffoffocus_b === "0"} onChange={(event)=>this.handleChange(event, "diffoffocus_b")} />
@@ -828,7 +827,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Increased saliva </p>
+                <p style={{fontWeight: 'bold'}}> Increased saliva </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="saliva1" required checked={this.state.increasedsaliva_b === "0"} onChange={(event)=>this.handleChange(event, "increasedsaliva_b")} />
@@ -849,7 +848,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Sweating </p>
+                <p style={{fontWeight: 'bold'}}> Sweating </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="sweating1" required checked={this.state.sweating_b === "0"} onChange={(event)=>this.handleChange(event, "sweating_b")} />
@@ -870,7 +869,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Nausea </p>
+                <p style={{fontWeight: 'bold'}}> Nausea </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="nausea1" required checked={this.state.nausea_b === "0"} onChange={(event)=>this.handleChange(event, "nausea_b")} />
@@ -891,7 +890,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Blurred vision </p>
+                <p style={{fontWeight: 'bold'}}> Blurred vision </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="blurr1" required checked={this.state.blurredvis_b === "0"} onChange={(event)=>this.handleChange(event, "blurredvis_b")} />
@@ -912,7 +911,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Dizziness or vertigo </p>
+                <p style={{fontWeight: 'bold'}}> Dizziness or vertigo </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="dizzvert1" required checked={this.state.dizziness_b === "0"} onChange={(event)=>this.handleChange(event, "dizziness_b")} />
@@ -940,7 +939,7 @@ class Questionnaire extends Component{
 
           <div>
             <label><h3> Now after the virtual reality experience please indicate how you are feeling. </h3></label>
-            <p> General discomfort </p>
+            <p style={{fontWeight: 'bold'}}> General discomfort </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="gendis2" required checked={this.state.gendis_a === "0"} onChange={(event)=>this.handleChange(event, "gendis_a")} />
@@ -961,7 +960,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Fatigue </p>
+                <p style={{fontWeight: 'bold'}}> Fatigue </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="fatigue2" required checked={this.state.fatigue_a === "0"} onChange={(event)=>this.handleChange(event, "fatigue_a")} />
@@ -982,7 +981,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Headache </p>
+                <p style={{fontWeight: 'bold'}}> Headache </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="headache2" required checked={this.state.headache_a === "0"} onChange={(event)=>this.handleChange(event, "headache_a")} />
@@ -1003,7 +1002,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Eye strain </p>
+                <p style={{fontWeight: 'bold'}}> Eye strain </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="eyestrain2" required checked={this.state.eyestrain_a === "0"} onChange={(event)=>this.handleChange(event, "eyestrain_a")} />
@@ -1024,7 +1023,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Difficulty focusing or concentrating </p>
+                <p style={{fontWeight: 'bold'}}> Difficulty focusing or concentrating </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="difffoc2" required checked={this.state.diffoffocus_a === "0"} onChange={(event)=>this.handleChange(event, "diffoffocus_a")} />
@@ -1045,7 +1044,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Increased saliva </p>
+                <p style={{fontWeight: 'bold'}}> Increased saliva </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="saliva2" required checked={this.state.increasedsaliva_a === "0"} onChange={(event)=>this.handleChange(event, "increasedsaliva_a")} />
@@ -1066,7 +1065,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Sweating </p>
+                <p style={{fontWeight: 'bold'}}> Sweating </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="sweat2" required checked={this.state.sweating_a === "0"} onChange={(event)=>this.handleChange(event, "sweating_a")} />
@@ -1087,7 +1086,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Nausea </p>
+                <p style={{fontWeight: 'bold'}}> Nausea </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="nausea2" required checked={this.state.nausea_a === "0"} onChange={(event)=>this.handleChange(event, "nausea_a")} />
@@ -1108,7 +1107,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Blurred vision </p>
+                <p style={{fontWeight: 'bold'}}> Blurred vision </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="blurr2" required checked={this.state.blurredvis_a === "0"} onChange={(event)=>this.handleChange(event, "blurredvis_a")} />
@@ -1129,7 +1128,7 @@ class Questionnaire extends Component{
                 </div>
 
                 <br/>
-                <p> Dizziness or vertigo </p>
+                <p style={{fontWeight: 'bold'}}> Dizziness or vertigo </p>
                 <div className="radio" style={{display: 'flex', flexDirection: 'row'}}>
                   <label>
                     <input type="radio" value="0" name="dizzvert2" required checked={this.state.dizziness_a === "0"} onChange={(event)=>this.handleChange(event, "dizziness_a")} />

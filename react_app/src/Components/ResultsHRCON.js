@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import styles from './Home.module.css';
+import styles from './Results.module.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -179,6 +179,7 @@ const ResultsHRCON = (props) => {
                             <CartesianGrid strokeDasharray="3 3" />
                             <Bar dataKey="res" fill="#8884d8" />
                         </BarChart>
+                        <h5 styles = {{textAlign: "center"}}> BPM: Beats per minute</h5>
                         </div>
                         )
 
@@ -238,6 +239,7 @@ const ResultsHRCON = (props) => {
                             <CartesianGrid strokeDasharray="3 3" />
                             <Bar dataKey="res" fill="#8884d8" />
                         </BarChart>
+                        
                         </div>
                         )
                         console.log(dataPost)
@@ -271,36 +273,30 @@ const ResultsHRCON = (props) => {
 
     return (
         <div>
-            <div className={styles.container}>         
-                <div className={classes.root}>
+            <div style={{width: 500, marginLeft: 20, height: 70}}>
+                <h3> Comparison for heartrate results:</h3>
+            </div>
+        <div className={styles.container}>
+            
+            <div className={styles.listItemContainer}>
                     <List component="nav" aria-label="main mailbox folders">
-                        <ListItemLink href="/results/hr">
-                        <ListItemText primary="Heart Rate" />
+                        <ListItemLink style={{ border: "2px solid lightgrey"}} href="/results/hr">
+                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }}  primary="Heart Rate" />
                         </ListItemLink>
-                        <ListItemLink href="/results/emg">
-                        <ListItemText primary="Muscle Activity" />
+                        <ListItemLink style={{ borderRight: "2px solid lightgrey", borderLeft: "2px solid lightgrey"}} href="/results/emg">
+                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }} primary="Muscle Activity" />
                         </ListItemLink>
-                        <ListItemLink href="/results/quest">
-                        <ListItemText primary="Questionnaire" />
+                        <ListItemLink style={{ border: "2px solid lightgrey"}}  href="/results/quest">
+                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }} primary="Questionnaire" />
                         </ListItemLink>
                     </List>
-                </div>
-                
-           
             </div>
-                {/* <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
-                    {loaded && graphPre}
-                    {loaded && graph25}
-                    {loaded && graph50}
-                </div> 
-                <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
-                    {loaded && graph75}
-                    {loaded && graphPost}
-                </div>  */}
-                <div style={{marginLeft : '25%', marginBottom : '50px', display: 'flex'}}>  
+            <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
                     {loaded && graphPre}
                     {loaded && graphPost}
-                </div> 
+                    
+                </div>               
+            </div>
         </div>
     )
 }

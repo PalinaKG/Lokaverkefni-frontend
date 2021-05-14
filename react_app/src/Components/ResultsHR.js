@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import Graph from './Graph';
-import styles from './Home.module.css';
+import styles from './Results.module.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';

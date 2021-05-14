@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import styles from './Home.module.css';
+import styles from './Results.module.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -278,12 +278,12 @@ const ResultsQuest = (props) => {
 
     return (
         <div>
-            <div style={{width: 500, marginLeft: 20}}>
-                <h3> Compare results between people that had suffered a concussion and those who had not</h3>
+            <div style={{width: 500, marginLeft: 20, height: 70}}>
+                <h3> Comparison for questionnaire results:</h3>
             </div>
         <div className={styles.container}>
             
-            <div className={styles.container1}>
+            <div className={styles.listItemContainer}>
                     <List component="nav" aria-label="main mailbox folders">
                         <ListItemLink style={{ border: "2px solid lightgrey"}} href="/results/hr">
                         <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }}  primary="Heart Rate" />
