@@ -4,18 +4,15 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import { Button, Radio} from '@material-ui/core';
-import { API_SERVER } from '../settings';
+import { API_SERVER } from '../../settings';
 import { CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import { CartesianGrid, BarChart, Bar, XAxis, YAxis} from "recharts";
 import Divider from '@material-ui/core/Divider';
+import ResultsMenu from '../../Components/ResultsMenu'
 
 var subID1 = []
 var subID2 = []
-var type = []
 var res1 = 0
 var res2 = 0
 var res3 = 0
@@ -42,9 +39,6 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
-  }
 
 const ResultsQuest = (props) => {
     const [loaded0, setLoaded0] = useState(false);
@@ -282,22 +276,7 @@ const ResultsQuest = (props) => {
                 <h3> Comparison for questionnaire results:</h3>
             </div>
         <div className={styles.container}>
-            
-            <div className={styles.listItemContainer}>
-                    <List component="nav" aria-label="main mailbox folders">
-                        <ListItemLink style={{ border: "2px solid lightgrey"}} href="/results/hr">
-                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }}  primary="Heart Rate" />
-                        </ListItemLink>
-                        <ListItemLink style={{ borderRight: "2px solid lightgrey", borderLeft: "2px solid lightgrey"}} href="/results/emg">
-                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }} primary="Muscle Activity" />
-                        </ListItemLink>
-                        <ListItemLink style={{ border: "2px solid lightgrey"}}  href="/results/quest">
-                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }} primary="Questionnaire" />
-                        </ListItemLink>
-                    </List>
-                </div>
-                
-                
+            <ResultsMenu type = "researcher"/>  
                 <div className={styles.container2}>
                     <InputLabel style={{ marginLeft: 0, marginRight: 10, marginTop: 45}} > Motion Sickness symptoms: </InputLabel>
                     <Select value={msGoldenValue} onChange={handleMSGolden}>

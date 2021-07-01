@@ -1,11 +1,10 @@
 import React, { useState, useEffect} from 'react';
-import { API_SERVER } from '../settings';
+import { API_SERVER } from '../../settings';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import { CartesianGrid, BarChart, Bar, XAxis, YAxis} from "recharts";
 import styles from './Results.module.css';
+import ResultsMenu from '../../Components/ResultsMenu'
+
 
 
 var subID1 = []
@@ -44,9 +43,6 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
-  }
 
 const ResultsEMG = (props) => {
     const [loaded, setLoaded] = useState(false)
@@ -169,9 +165,9 @@ const ResultsEMG = (props) => {
                         graphPre = (
                             <div style = {{width: "400px"}} >
                                 <p>Muscle activity BEFORE virtual reality experience:</p>
-                        <BarChart width={300} height={300} data={dataPre} margin={{left: 50}} barSize={40} >
+                        <BarChart width={300} height={300} data={dataPre} margin={{left: 70}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
-                            <YAxis />
+                            <YAxis label={{ value: "Muscle activity", position: "outsideMiddle", angle: 0, dx: -50}}/>
                             <CartesianGrid strokeDasharray="3 3" />
                             <Bar dataKey="res" fill="#8884d8" />
                         </BarChart>
@@ -228,9 +224,9 @@ const ResultsEMG = (props) => {
                         graphPost = (
                             <div style = {{width: "400px"}} >
                                 <p>Muscle activity AFTER virtual reality experience:</p>
-                        <BarChart width={300} height={300} data={dataPost} margin={{left: 50}} barSize={40} >
+                        <BarChart width={300} height={300} data={dataPost} margin={{left: 70}} barSize={40} >
                             <XAxis dataKey="group" scale="point" padding={{ left: 30, right: 30 }} />
-                            <YAxis />
+                            <YAxis label={{ value: "Muscle activity", position: "outsideMiddle", angle: 0, dx: -50}}/>
                             <CartesianGrid strokeDasharray="3 3" />
                             <Bar dataKey="res" fill="#8884d8" />
                         </BarChart>
@@ -274,19 +270,7 @@ const ResultsEMG = (props) => {
             </div>
         <div className={styles.container}>
             
-            <div className={styles.listItemContainer}>
-                    <List component="nav" aria-label="main mailbox folders">
-                        <ListItemLink style={{ border: "2px solid lightgrey"}} href="/results/hr">
-                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }}  primary="Heart Rate" />
-                        </ListItemLink>
-                        <ListItemLink style={{ borderRight: "2px solid lightgrey", borderLeft: "2px solid lightgrey"}} href="/results/emg">
-                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }} primary="Muscle Activity" />
-                        </ListItemLink>
-                        <ListItemLink style={{ border: "2px solid lightgrey"}}  href="/results/quest">
-                        <ListItemText primaryTypographyProps={{ style: {fontWeight: 'bolder'} }} primary="Questionnaire" />
-                        </ListItemLink>
-                    </List>
-            </div>
+        <ResultsMenu type = "researcher"/>  
             <div style={{marginLeft : '5%', marginBottom : '50px', display: 'flex'}}>  
                     {loaded && graphPre}
                     {loaded && graphPost}

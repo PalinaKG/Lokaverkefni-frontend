@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import Graph from './Graph';
+import Graph from '../../Components/Graph';
 import styles from './Results.module.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
